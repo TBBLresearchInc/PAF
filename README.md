@@ -1,4 +1,4 @@
-# PAF 2015
+# PAF
 A modern logical spreadsheet
 
 Organize freely logical rules and find out logical errors
