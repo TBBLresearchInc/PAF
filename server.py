@@ -1,7 +1,7 @@
 import web
 
 urls = (
-    '/py*', 'hello'
+    '/py/(.*)', 'hello'
 )
 app = web.application(urls, globals())
 
