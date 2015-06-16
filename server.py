@@ -11,5 +11,9 @@ class hello:
             name = 'World'
         return 'Hello motherfucking bitch, ' + name + '!'
 
+    def POST(self):
+        return "OOKK"
+
+
 if __name__ == "__main__":
     app.run()
