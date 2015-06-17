@@ -11,8 +11,8 @@ class hello:
             name = 'World'
         return 'Hello motherfucking bitch, ' + name + '!'
 
-    def POST(self):
-        return "OOKK"
+    def POST(self, name):
+        return "OKLM " + name
 
 
 if __name__ == "__main__":
