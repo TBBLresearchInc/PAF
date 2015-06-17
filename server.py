@@ -39,7 +39,7 @@ class Grid:
 
     def update(self, cell):
         for i in range(0, len(self.grid)):
-            if self.grid[i]["row"] == cell["row"] & self.grid[i]["column"] == cell["column"]:
+            if int(self.grid[i]["row"]) == int(cell["row"]) & int(self.grid[i]["column"]) == int(cell["column"]):
                 self.grid[i] = cell
                 return
             else:
