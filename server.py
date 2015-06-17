@@ -22,8 +22,6 @@ class Json:
         #print(data["content"])
         cell = {"content": data["content"], "row": data["row"], "column": data["column"]}
         grid.update(cell)
-        print(data["row"])
-        print(data)
         for i in range(0, len(grid)):
             print(grid.get(i))
         return "row : " + data["row"] + " , column : " + data["column"] + ", content : " + data["content"]
