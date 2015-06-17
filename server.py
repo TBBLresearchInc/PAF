@@ -20,7 +20,8 @@ class Json:
         #print(data["row"])
         #print(data["column"])
         #print(data["content"])
-        grid.update(data)
+        cell = {"content": data["content"], "row": data["row"], "column": data["column"]}
+        grid.update(cell)
         print(data["row"])
         print(data)
         for i in range(0, len(grid)):
