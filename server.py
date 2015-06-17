@@ -39,12 +39,12 @@ class Grid:
 
     def update(self, cell):
         for i in range(0, len(self.grid)):
-            if int(self.grid[i]["row"]) == int(cell["row"]) & int(self.grid[i]["column"]) == int(cell["column"]):
+            if self.grid[i]["row"] == cell["row"] and self.grid[i]["column"] == cell["column"]:
                 self.grid[i] = cell
-                print("F")
+                print("replace")
                 return
             else:
-                print("G")
+                print("add")
                 self.grid.append(cell)
 
     def get(self, pos):
