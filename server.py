@@ -21,9 +21,9 @@ class Json:
         #print(data["row"])
         #print(data["column"])
         #print(data["content"])
-        content = data["content"]
-        row = data["row"]
-        column = data["column"]
+        content = str(data["content"])
+        row = int(data["row"])
+        column = int(data["column"])
         cell = {"content": content, "row": row, "column": column}
         grid.update(cell)
         for i in range(0, len(grid)):
