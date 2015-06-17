@@ -51,7 +51,7 @@ class Json:
 
     def POST(self):
         data = web.input()
-        raise web.seeother('/')
+        print(data)
         return data
 
 
