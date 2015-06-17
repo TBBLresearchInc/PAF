@@ -63,6 +63,9 @@ class Tab:
         self.pos = GridPos(row, column)
         self.tab[self.pos.toStr()] = content
 
+    def __str__(self):
+        print(self.tab)
+
 
 
 grid = Tab({})
