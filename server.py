@@ -29,7 +29,6 @@ class Json:
         for i in range(0, len(grid)):
             print(grid.get(i))
 
-        {"cells": [{"row": 1, "column": 1}]}
         return { "cells": [ {"row":1, "column":1, "class":"wrong"},
                 {"row":1, "column": 2, "class":"wrong"} ] }
 
