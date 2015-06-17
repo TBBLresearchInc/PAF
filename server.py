@@ -56,7 +56,7 @@ class Grid:
     def __len__(self):
         return len(self.grid)
 
-grid = Grid([{"content": "Arnaud", "row": 10, "column": 1}])
+grid = Grid([])
 
 
 
