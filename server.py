@@ -24,7 +24,7 @@ class Json:
         content = str(data["content"])
         row = int(data["row"])
         column = int(data["column"])
-        cell = {"content": content, "row": row, "column": column}
+        cell = {'content': content, 'row': row, 'column': column}
         grid.update(cell)
         for i in range(0, len(grid)):
             print(grid.get(i))
@@ -41,6 +41,7 @@ class Grid:
         for i in range(0, len(self.grid)):
             if int(self.grid[i]["row"]) == int(cell["row"]) & int(self.grid[i]["column"]) == int(cell["column"]):
                 self.grid[i] = cell
+                print("F")
                 return
             else:
                 self.grid.append(cell)
