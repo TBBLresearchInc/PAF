@@ -50,7 +50,7 @@ class Grid:
                 print("add")
                 self.grid.append(cell)
                 return
-        grid.append(cell)
+        self.grid.append(cell)
 
     def get(self, pos):
         return self.grid[pos]
