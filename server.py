@@ -51,8 +51,8 @@ class Json:
 
     def POST(self):
         data = web.input()
-        print(data[0]["content"])
-        print(data[0]["position"])
+        print(data["content"])
+        print(data["position"])
         return data["content"]
 
 
