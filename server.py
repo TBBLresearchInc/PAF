@@ -38,10 +38,13 @@ class Grid:
         self.grid = grid
 
     def update(self, cell):
+        cpt = 0
         for i in range(0, len(self.grid)):
             if self.grid[i]["row"] == cell["row"] and self.grid[i]["column"] == cell["column"]:
                 self.grid[i] = cell
                 print("replace")
+                cpt = cpt + 1
+                print(cpt)
                 return
             else:
                 print("add")
