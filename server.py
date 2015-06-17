@@ -64,7 +64,7 @@ class Tab:
         self.tab[self.pos.toStr()] = content
 
     def __str__(self):
-        print(self.tab)
+        return self.tab
 
 
 
