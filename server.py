@@ -50,9 +50,11 @@ class Json:
         return user_data.id
 
     def POST(self):
-        data = web.input()["cells"]
-        print(data[0])
-        return data
+        data = web.input()
+        print(data["row"])
+        print(data["column"])
+        print(data["content"])
+        return "row : " + data["row"] + " , column : " + data["column"] + ", content : " + data["content"]
 
 
 
