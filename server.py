@@ -55,6 +55,11 @@ class Json:
         return data
 
 
+    def POST(self, name):
+        print name
+        return "{'content':'hello you'}"
+
+
 if __name__ == "__main__":
    app = web.application(urls, globals()) 
    app.run()
