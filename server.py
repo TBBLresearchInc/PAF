@@ -21,6 +21,7 @@ class Json:
         #print(data["column"])
         #print(data["content"])
         grid.update(data)
+        print(data["row"])
         print(data)
         for i in range(0, len(grid)):
             print(grid.get(i))
