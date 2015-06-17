@@ -28,7 +28,10 @@ class Json:
         grid.update(cell)
         for i in range(0, len(grid)):
             print(grid.get(i))
-        return "row : " + data["row"] + " , column : " + data["column"] + ", content : " + data["content"]
+
+        {"cells": [{"row": 1, "column": 1}]}
+        return { "cells": [ {"row":1, "column":1, "class":"wrong"},
+                {"row":1, "column": 2, "class":"wrong"} ] }
 
 class Grid:
 
