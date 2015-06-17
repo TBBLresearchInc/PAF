@@ -55,9 +55,6 @@ class Json:
         return data
 
 
-    def POST(self, name):
-        print name
-        return "{'content':'hello you'}"
 
 
 if __name__ == "__main__":
