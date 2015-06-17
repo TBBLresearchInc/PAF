@@ -1,5 +1,6 @@
 import web, json
 
+
 urls = ("/(.*)/", "Index",
         "/py/json", "Json",)
 
@@ -20,7 +21,10 @@ class Json:
         #print(data["row"])
         #print(data["column"])
         #print(data["content"])
-        cell = {"content": data["content"], "row": data["row"], "column": data["column"]}
+        content = data["content"]
+        row = data["row"]
+        column = data["column"]
+        cell = {"content": content, "row": row, "column": column}
         grid.update(cell)
         for i in range(0, len(grid)):
             print(grid.get(i))
@@ -47,7 +51,7 @@ class Grid:
     def __len__(self):
         return len(self.grid)
 
-grid = Grid([])
+grid = Grid([{"content": "Arnaud", "row": 10, "column": 1}])
 
 
 
