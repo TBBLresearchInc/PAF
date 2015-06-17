@@ -12,7 +12,8 @@ class hello:
         return 'Hello motherfucking bitch, ' + name + '!'
 
     def POST(self, name):
-        return "OKLM " + name
+        print name
+        return "{'content':'hello you'}"
 
 
 if __name__ == "__main__":
