@@ -25,42 +25,47 @@ class Json:
         row = int(data["row"])
         column = int(data["column"])
         cell = {'content': content, 'row': row, 'column': column}
-        grid.update(cell)
-        for i in range(0, len(grid)):
-            print(grid.get(i))
+        grid.update(row, column, content)
+        print(grid)
 
         return { "cells": [ {"row":1, "column":1, "class":"wrong"},
                 {"row":1, "column": 2, "class":"wrong"} ] }
 
-class Grid:
 
-    grid = []
 
-    def __init__(self, grid):
-        self.grid = grid
 
-    def update(self, cell):
-        cpt = 0
-        for i in range(0, len(self.grid)):
-            if self.grid[i]["row"] == cell["row"] and self.grid[i]["column"] == cell["column"]:
-                self.grid[i] = cell
-                print("replace")
-                cpt = cpt + 1
-                print(cpt)
-                return
-            else:
-                print("add")
-                self.grid.append(cell)
-                return
-        self.grid.append(cell)
 
-    def get(self, pos):
-        return self.grid[pos]
 
-    def __len__(self):
-        return len(self.grid)
 
-grid = Grid([])
+
+class GridPos:
+    pos = []
+
+    def __init__(self, row, column):
+        self.pos = [row, column]
+
+    def toStr(self):
+        return "["+str(self.pos[0])+","+str(self.pos[1])+"]"
+
+
+
+class Tab:
+
+    tab = {}
+
+    pos = GridPos(1,1)
+
+    def __init__(self, tab):
+        self.tab = tab
+        self.pos = GridPos(1,1)
+
+    def update(self, row, column, content):
+        self.pos = GridPos(row, column)
+        self.tab[self.pos.toStr()] = content
+
+
+
+grid = Tab({})
 
 
 
