@@ -44,6 +44,7 @@ class Grid:
                 print("F")
                 return
             else:
+                print("G")
                 self.grid.append(cell)
 
     def get(self, pos):
