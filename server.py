@@ -28,8 +28,8 @@ class Json:
         grid.update(row, column, content)
         print(grid)
 
-        return { "cells": [ {"row":1, "column":1, "class":"wrong"},
-                {"row":1, "column": 2, "class":"wrong"} ] }
+        return { "cells": [ {"row":1, "column":1, "result":"wrong"},
+                {"row":1, "column": 2, "result":"wrong"} ] }
 
 
 
@@ -66,9 +66,15 @@ class Tab:
     def __str__(self):
         return str(self.tab)
 
+    def get_cell(self, row, column):
+        self.pos = GridPos(row, column)
+        return self.tab[GridPos.toStr()]
+
 
 
 grid = Tab({})
+
+
 
 
 
