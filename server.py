@@ -28,11 +28,7 @@ class Json:
         grid.update(row, column, content)
         print(grid)
 
-        return { "cells": [ {"row":1, "column":1, "result":"wrong"},
-                {"row":1, "column": 2, "result":"wrong"} ] }
-
-
-
+        return grid.get_colors()
 
 
 
@@ -47,11 +43,19 @@ class GridPos:
     def toStr(self):
         return "["+str(self.pos[0])+","+str(self.pos[1])+"]"
 
+    def get_row(self):
+        return self.pos[0]
+
+    def get_column(self):
+        return self.pos[1]
+
 
 
 class Tab:
 
     tab = {}
+
+    tab_pos = []
 
     pos = GridPos(1,1)
 
@@ -61,14 +65,25 @@ class Tab:
 
     def update(self, row, column, content):
         self.pos = GridPos(row, column)
-        self.tab[self.pos.toStr()] = content
+        self.tab[self.pos.toStr()] = [content, row, column]
+        if not([row, column] in self.tab_pos):
+            self.tab_pos.append([row, column])
 
     def __str__(self):
         return str(self.tab)
 
     def get_cell(self, row, column):
         self.pos = GridPos(row, column)
-        return self.tab[GridPos.toStr()]
+        return self.tab[GridPos.toStr()][0]
+
+    def get_colors(self):
+        colors = {}
+
+        colors["cells"] = []
+
+        for i in range(0, len(self.tab_pos)):
+
+            colors["cells"].append({"row": self.tab_pos[i][0], "column": self.tab_pos[i][1], "result": "wrong"})
 
 
 
