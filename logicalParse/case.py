@@ -12,4 +12,4 @@ class Case:
         self.sentence = sentence
 
     def whatCase(self):
-        print( case.coordinates.getColumn() + str(case.coordinates.getLine()))
+        print(self.coordinates.getColumn() + str(self.coordinates.getLine()))
