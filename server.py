@@ -1,9 +1,7 @@
-import web, json
-
+import web
 
 urls = ("/(.*)/", "Index",
         "/py/json", "Json",)
-
 
 class Index:
     def GET(self, name):
@@ -17,21 +15,14 @@ class Json:
         return user_data.id
 
     def POST(self):
-        data = web.input()
-        #print(data["row"])
-        #print(data["column"])
-        #print(data["content"])
+        data = web.input() #retrieve input data from client
         content = str(data["content"])
         row = int(data["row"])
         column = int(data["column"])
         cell = {'content': content, 'row': row, 'column': column}
-        grid.update(row, column, content)
-        print(grid)
-
-        return grid.get_colors()
-
-
-
+        grid.update(row, column, content) #update the grid with the propered-formatted input
+        print(grid) # debug purpose
+        return grid.get_colors() # return colors to fill the cells after some data process (not yet)
 
 
 class GridPos:
@@ -57,15 +48,17 @@ class Tab:
 
     tab_pos = []
 
+    colors = []
+
     pos = GridPos(1,1)
 
     def __init__(self, tab):
         self.tab = tab
         self.pos = GridPos(1,1)
 
-    def update(self, row, column, content):
+    def update(self, row, column, content, color="wrong"):
         self.pos = GridPos(row, column)
-        self.tab[self.pos.toStr()] = [content, row, column]
+        self.tab[self.pos.toStr()] = {"content": content, "row": row, "column": column, "color": color}
         if not([row, column] in self.tab_pos):
             self.tab_pos.append([row, column])
 
@@ -74,7 +67,19 @@ class Tab:
 
     def get_cell(self, row, column):
         self.pos = GridPos(row, column)
-        return self.tab[GridPos.toStr()][0]
+        return self.tab[self.pos.toStr()]["content"]
+
+    def get_color(self, row, column):
+        self.pos = GridPos(row, column)
+        return self.tab[self.pos.toStr()]["color"]
+
+    def get_pos(self):
+        return self.tab_pos
+
+    def set_color(self, row, column, color):
+        self.pos = GridPos(row, column)
+        self.tab[self.pos.toStr()]["color"] = color
+
 
     def get_colors(self):
         colors = {}
@@ -82,23 +87,13 @@ class Tab:
         colors["cells"] = []
 
         for i in range(0, len(self.tab_pos)):
+            self.pos = GridPos(self.tab_pos[i][0], self.tab_pos[i][1])
 
-            colors["cells"].append({"row": self.tab_pos[i][0], "column": self.tab_pos[i][1], "result": "wrong"})
+            colors["cells"].append({"row": self.tab_pos[i][0], "column": self.tab_pos[i][1], "result": self.tab[self.pos.toStr()]["color"]})
 
 
 
 grid = Tab({})
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
    app = web.application(urls, globals()) 
