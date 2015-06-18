@@ -6,7 +6,7 @@ __author__ = 'claraberard'
 
 class Predicate(Text):
 
-    weight = Weight(1)
+    weight = Weight(0)
 
 
     def getPredicat(self):
