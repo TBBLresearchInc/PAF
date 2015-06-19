@@ -35,6 +35,7 @@ class Json:
         # data process from logical engine #
         ####################################
         print(tab) # debug purpose
+        print(tab.get_colors()) #debug purpose
         return tab.get_colors() # return colors to fill the cells after some data process (not yet)
 
 
