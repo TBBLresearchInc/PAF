@@ -100,6 +100,7 @@ class Tab:
         for i in range(0, len(self.tab_pos)):
             self.pos = GridPos(self.tab_pos[i][0], self.tab_pos[i][1])
             colors["cells"].append({"row": self.tab_pos[i][0], "column": self.tab_pos[i][1], "result": self.tab[self.pos.toStr()]["color"]})
+        return colors
 
 
 tab = Tab({})
