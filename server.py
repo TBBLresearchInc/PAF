@@ -2,11 +2,11 @@ __author__ = 'Quentin Leroy'
 # Quentin Leroy
 # quentin.leroy@telecom-paristech.fr
 
-# Cette application web.py fait l'interface entre les inputs du client dans les cellules du tableau
-# et l'intelligence de calcul du tableur (interprétation des inputs en terme d'expressions logiques puis
-# divers calculs logiques), l'application renvoie aussi aux clients les resultats de la partie calcul
-# (il y a t-il des cases a colorier ? En quelles couleurs ? Il y a t-il des cellules à completer/modifier ?
-#  Il y a-t-il un message a donner à l'utilisateur ?)
+""" Cette application web.py fait l'interface entre les inputs du client dans les cellules du tableau
+ et l'intelligence de calcul du tableur (interprétation des inputs en terme d'expressions logiques puis
+ divers calculs logiques), l'application renvoie aussi aux clients les resultats de la partie calcul
+ (il y a t-il des cases a colorier ? En quelles couleurs ? Il y a t-il des cellules à completer/modifier ?
+  Il y a-t-il un message a donner à l'utilisateur ?)"""
 
 import web
 
