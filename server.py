@@ -1,3 +1,13 @@
+__author__ = 'Quentin Leroy'
+# Quentin Leroy
+# quentin.leroy@telecom-paristech.fr
+
+# Cette application web.py fait l'interface entre les inputs du client dans les cellules du tableau
+# et l'intelligence de calcul du tableur (interprétation des inputs en terme d'expressions logiques puis
+# divers calculs logiques), l'application renvoie aussi aux clients les résultats de la partie calcul
+# (il y a t-il des cases à colorier ? En quelles couleurs ? Il y a t-il des cellules à compléter/modifier ?
+# Il y a-t-il un message à donner à l'utilisateur ?)
+
 import web
 
 urls = ("/(.*)/", "Index",
@@ -20,9 +30,12 @@ class Json:
         row = int(data["row"])
         column = int(data["column"])
         cell = {'content': content, 'row': row, 'column': column}
-        grid.update(row, column, content) #update the grid with the propered-formatted input
-        print(grid) # debug purpose
-        return grid.get_colors() # return colors to fill the cells after some data process (not yet)
+        tab.update(row, column, content) #update the grid with the propered-formatted input
+        ####################################
+        # data process from logical engine #
+        ####################################
+        print(tab) # debug purpose
+        return tab.get_colors() # return colors to fill the cells after some data process (not yet)
 
 
 class GridPos:
@@ -80,20 +93,15 @@ class Tab:
         self.pos = GridPos(row, column)
         self.tab[self.pos.toStr()]["color"] = color
 
-
     def get_colors(self):
         colors = {}
-
         colors["cells"] = []
-
         for i in range(0, len(self.tab_pos)):
             self.pos = GridPos(self.tab_pos[i][0], self.tab_pos[i][1])
-
             colors["cells"].append({"row": self.tab_pos[i][0], "column": self.tab_pos[i][1], "result": self.tab[self.pos.toStr()]["color"]})
 
 
-
-grid = Tab({})
+tab = Tab({})
 
 if __name__ == "__main__":
    app = web.application(urls, globals()) 
