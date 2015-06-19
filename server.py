@@ -8,7 +8,7 @@ __author__ = 'Quentin Leroy'
  (il y a t il des cases a colorier ? En quelles couleurs ? Il y a t il des cellules a completer-modifier ?
   Il y a t il un message a donner a l utilisateur ?)"""
 
-import web
+import web, json
 
 urls = ("/(.*)/", "Index",
         "/py/json", "Json",)
@@ -36,7 +36,7 @@ class Json:
         ####################################
         print(tab) # debug purpose
         print(str(tab.get_colors())) #debug purpose
-        return tab.get_colors() # return colors to fill the cells after some data process (not yet)
+        return json.dumps(tab.get_colors()) # return colors to fill the cells after some data process (not yet)
 
 
 class GridPos:
