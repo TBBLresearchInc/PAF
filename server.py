@@ -36,7 +36,7 @@ class Json:
         ####################################
         print(tab) # debug purpose
         print(str(tab.get_colors())) #debug purpose
-        return str(tab.get_colors()) # return colors to fill the cells after some data process (not yet)
+        return tab.get_colors() # return colors to fill the cells after some data process (not yet)
 
 
 class GridPos:
