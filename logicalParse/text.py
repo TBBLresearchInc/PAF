@@ -10,18 +10,24 @@ class Text:
 
     def __init__(self, sentence):
         self.sentence = sentence
+        self.nature = 0
 
     def is_predicate(self):
         return self.nature == 1
 
-    def is_Attitude(self):
-        return  self.nature == 2
+    def is_attitude(self):
+        return self.nature == 2
 
-    def is_Rule(self):
+    def is_rule(self):
         return self.nature == 3
 
-    def is_Formula(self):
+    def is_formula(self):
         return self.nature == 4
+
+
+
+
+
 
 
 

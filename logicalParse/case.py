@@ -1,4 +1,5 @@
 from logicalParse.coordinates import Coordinates
+from logicalParse.text import Text
 from server import Grid
 
 
@@ -22,6 +23,18 @@ class Case(Grid):
     def get_inside(self):
         return self.get_cell(self.coordinates[0], self.coordinates[1])
 
+    def get_text_in_a_case(self):
+       t = Text(self.get_inside())
+
     def is_a_formula(self):
-        return self.get_inside()[0] == "="
+        if self.get_inside()[0] == "=" :
+            self.set_nature(4)
+            return True
+        else :
+            self.set_nature(1)
+            return False
+
+
+
+
 
