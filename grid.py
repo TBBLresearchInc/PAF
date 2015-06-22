@@ -3,22 +3,10 @@ __author__ = 'quentinleroy'
 # Quentin Leroy
 # quentin.leroy@telecom-paristech.fr
 
-class GridPos:
-    pos = []
-
-    def __init__(self, row, column):
-        self.pos = [row, column]
-
-    def toStr(self):
-        return "["+str(self.pos[0])+","+str(self.pos[1])+"]"
-
-    def get_row(self):
-        return self.pos[0]
-
-    def get_column(self):
-        return self.pos[1]
-
 class Grid:
+
+    """ Classe décrivant le tableau
+    """
 
     grid = {}
 
@@ -63,5 +51,21 @@ class Grid:
             self.pos = GridPos(self.grid_pos[i][0], self.grid_pos[i][1])
             colors["cells"].append({"row": self.grid_pos[i][0], "column": self.grid_pos[i][1], "result": self.grid[self.pos.toStr()]["color"]})
         return colors
+
+class GridPos:
+    pos = []
+
+    def __init__(self, row, column):
+        self.pos = [row, column]
+
+    def toStr(self):
+        return "["+str(self.pos[0])+","+str(self.pos[1])+"]"
+
+    def get_row(self):
+        return self.pos[0]
+
+    def get_column(self):
+        return self.pos[1]
+
 
 

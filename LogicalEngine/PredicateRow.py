@@ -1,6 +1,5 @@
 __author__ = 'Yannick'
 
-
 class PredicateRow:
 
     def __init__(self,row):
