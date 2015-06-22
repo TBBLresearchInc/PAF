@@ -1,40 +1,41 @@
 from logicalParse.coordinates import Coordinates
 from logicalParse.text import Text
-from server import Grid
-
 
 
 __author__ = 'claraberard'
 
 
-class Case(Grid):
+class Case():
 
     coordinates = Coordinates(0,0)
     nature = 0
+    text = Text("")
+    ref_predicate = coordinates
+    ref_non = coordinates
 
-    def __init__(self, row, column):
-        self.coordinates[0]=row
-        self.coordinates[1]=column
+    def __init__(self, row, column, text):
+        self.coordinates = Coordinates(row, column)
         self.nature = 0
+        self.text = text
+        self.ref_predicate = self.coordinates
+        self.ref_non = self.coordinates
 
-    def set_nature(self,nature):
-        self.nature=nature
+    def is_predicate(self):
+        return self.nature == 1
 
-    def get_inside(self):
-        return self.get_cell(self.coordinates[0], self.coordinates[1])
+    def is_attitude(self):
+        return self.nature == 2
 
-    def get_text_in_a_case(self):
-       t = Text(self.get_inside())
+    def is_rule(self):
+        return self.nature == 3
 
-    def is_a_formula(self):
-        if self.get_inside()[0] == "=" :
-            self.set_nature(4)
-            return True
-        else :
-            self.set_nature(1)
-            return False
+    def is_formula(self):
+        return self.nature == 4
 
+    def get_weight(self):
+        return self.text.have_weight()
 
-
+    def is_in_relation(self):
+        return (self.ref_predicate != self.coordinates) | (self.ref_non != self.coordinates)
 
 
