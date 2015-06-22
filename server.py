@@ -1,3 +1,4 @@
+# coding=utf-8
 __author__ = 'Quentin Leroy'
 # Quentin Leroy
 # quentin.leroy@telecom-paristech.fr
@@ -43,7 +44,7 @@ class Json:
         # data process from logical engine #
         ####################################
 
-        # En fonction des calculs effectués, il faudra appeler set_color(row, column)
+        # En fonction des calculs effectues, il faudra appeler set_color(row, column)
 
         print(grid) # debug purpose
         print(str(grid.get_colors())) #debug purpose

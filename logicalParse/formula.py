@@ -6,13 +6,13 @@ __author__ = 'claraberard'
 class Formula(Case):
 
     def isFormulaWeight(self):
-        return self.sentence[0] == '&'
+        return self.get_inside()[0] == '&'
 
-    def solution(self):
-        if self.isFormulaWeight():
-            begin
-            l = FWeight(self.coordinates,self.sentence)
+    def isFormulaNon(self):
+        return self.get_inside()[0:2] == "NON"
 
+    def isFormulaResult(self):
+        return self.get_inside()[0] == "("
 
 
 
