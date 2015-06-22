@@ -6,7 +6,6 @@ __author__ = 'claraberard'
 
 class Rule(Text):
 
-
     def getRule(self):
         return self.sentence
 

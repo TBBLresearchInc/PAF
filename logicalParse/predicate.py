@@ -6,11 +6,11 @@ __author__ = 'claraberard'
 
 class Predicate(Text):
 
-    weight = Weight(1)
+    weight = Weight(0)
 
-    def __init__(self, weight):
-        if weight != 1 | weight != -1:
-            print("ce prédicat est un attribut, attention à la definition")
-        else:
-            self.weight = weight
 
+    def getPredicat(self):
+        return self.sentence
+
+    def setPredicat(self, newPredicat):
+        self.sentence = newPredicat
