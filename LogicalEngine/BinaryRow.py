@@ -6,7 +6,6 @@ __author__ = 'Yannick'
 
 class BinaryRow:
 
-
     def __init__(self,row):
         self.row=row
 
@@ -18,7 +17,6 @@ class BinaryRow:
                 i+=1
         self.row[i]=1
 
-
     def brow_to_predrow(self, predlist):
         predRow = []
         for i in range(0,len(predlist)-1):
@@ -27,7 +25,6 @@ class BinaryRow:
                 predRow.append(Predicate(pred.sentence, pred.coordinates,Weight(-1)))
             else:
                 predRow.append(Predicate(pred.sentence, pred.coordinates,Weight(1)))
-
 
     def totalweight(self, attRow):
         weight=0

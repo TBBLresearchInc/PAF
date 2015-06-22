@@ -8,7 +8,6 @@ class Predicate(Text):
 
     weight = Weight(0)
 
-
     def getPredicat(self):
         return self.sentence
 

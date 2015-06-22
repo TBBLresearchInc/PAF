@@ -6,7 +6,6 @@ class Solution:
     def __init__(self,matrix):
         self.matrix=matrix
 
-
     def insert(self, wtot, wmax, binRow):
         if (wtot==wmax):
             self.matrix.append(binRow.bRow_to_predRow(binRow))
