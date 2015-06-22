@@ -12,4 +12,8 @@ class Attitude(Predicate):
     def __init__(self):
         self.nature = 2
 
-    pass
+    def __init__(self, predicate,coordinates, weight):
+        self.predicate=predicate
+        self.coodinates=coordinates
+        self.weight=weight
+
