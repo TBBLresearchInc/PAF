@@ -50,7 +50,6 @@ class Json:
         print(str(grid.get_colors())) #debug purpose
         return str(json.dumps(grid.get_colors())) # return colors to fill the cells after some data process (not yet)
 
-
 grid = Grid({})
 
 if __name__ == "__main__":
