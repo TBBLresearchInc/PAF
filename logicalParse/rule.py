@@ -6,6 +6,10 @@ __author__ = 'claraberard'
 
 class Rule(Text):
 
+    def __init__(self,sentence,predrow):
+        self.predrow=predrow
+        self.sentence=sentence
+
     def getRule(self):
         return self.sentence
 
