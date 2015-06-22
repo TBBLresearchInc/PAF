@@ -3,7 +3,7 @@ __author__ = 'claraberard'
 class Coordinates:
 
     line = 0
-    column = 'A'
+    column = 0
 
     def __init__(self, line, column):
         self.line = line
@@ -20,5 +20,14 @@ class Coordinates:
 
     def getColumn(self):
         return self.column
+
+    def toString(self):
+        return '('+ str(self.line) + ',' + str(self.column) + ')'
+
+
+
+
+
+
 
 

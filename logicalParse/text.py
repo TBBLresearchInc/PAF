@@ -7,7 +7,7 @@ class Text:
 
     sentence = ""
 
-    def __init__(self, sentence, coordinates):
+    def __init__(self, coordinates, sentence):
         self.sentence = sentence
         self.coordinates = coordinates
 

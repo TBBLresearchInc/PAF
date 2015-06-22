@@ -1,15 +1,21 @@
 from logicalParse.coordinates import Coordinates
+from server import GridPos
+from server import Tab
+
+
 
 __author__ = 'claraberard'
 
 
-class Case:
-    coordinates = Coordinates(1, 'A')
-    sentence = ""
+class Case(Tab):
 
-    def __init__(self, coordinates, sentence):
-        self.coordinates = coordinates
-        self.sentence = sentence
 
-    def whatCase(self):
-        print(self.coordinates.getColumn() + str(self.coordinates.getLine()))
+    def getText(self):
+        return self.get_cell(self.pos[0],self.pos[1])
+
+    def eval(self):
+        if self.get_Text[0] == "&" :
+
+
+
+
