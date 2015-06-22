@@ -10,6 +10,6 @@ class Solution:
         if (wtot==wmax):
             self.matrix.append(binRow.bRow_to_predRow(binRow))
         elif(wtot>wmax):
-            self.matric=[[]]
+            self.matrix=[[]]
             self.matrix.append(binRow)
             wmax=wtot
