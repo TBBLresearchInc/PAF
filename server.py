@@ -28,18 +28,26 @@ class Json:
 
     def POST(self):
         data = web.input() #retrieve input data from client
-        content = str(data["content"])
-        row = int(data["row"])
-        column = int(data["column"])
-        cell = {'content': content, 'row': row, 'column': column}
-        grid.update(row, column, content) #update the grid with the propered-formatted input
+
+        grid = Grid({})
+
+        nb_data = len(data["cells"])
+
+        for i in range(0, len[data["cells"]]):
+            content = str(data["cells"][i]["content"])
+            row = int(data["cells"][i]["row"])
+            column = int(data["cells"][i]["column"])
+            grid.update(row, column, content)
+
         ####################################
         # data process from logical engine #
         ####################################
+
+        # En fonction des calculs effectués, il faudra appeler set_color(row, column)
+
         print(grid) # debug purpose
         print(str(grid.get_colors())) #debug purpose
         return str(json.dumps(grid.get_colors())) # return colors to fill the cells after some data process (not yet)
-
 
 
 grid = Grid({})
