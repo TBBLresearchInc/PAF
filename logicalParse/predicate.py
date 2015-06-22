@@ -9,8 +9,8 @@ class Predicate(Text):
     weight = Weight(0)
 
 
-    def getPredicat(self):
+    def getPredicate(self):
         return self.sentence
 
-    def setPredicat(self, newPredicat):
-        self.sentence = newPredicat
+    def setPredicate(self, newPredicate):
+        self.sentence = newPredicate

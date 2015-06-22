@@ -7,6 +7,4 @@ __author__ = 'claraberard'
 
 class FWeight(Formula):
 
-    def solveFormula(self):
-        p = Predicate( self.sentence[1:])
-        return Attitude(self.coordinates, )
+  pass
