@@ -4,13 +4,14 @@ from logicalParse.weight import Weight
 __author__ = 'claraberard'
 
 
-class Attitude():
+class Attitude(Predicate):
 
     weight = Weight(0)
 
-    def __init__(self, weight,predicate):
-        self.predicate=predicate
+    def __init__(self, sentence, yesno, weight):
+        Predicate.__init__(self, sentence, yesno)
         self.weight = weight
+
 
     def have_weight(self):
         return self.weight

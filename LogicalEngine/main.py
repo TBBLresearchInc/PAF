@@ -15,10 +15,10 @@ p2=Predicate("p2",1)
 p3=Predicate("p3",1)
 p4=Predicate("p4",1)
 
-a1=Attitude(p1,Weight(50))
-a2=Attitude(p2,Weight(30))
-a3=Attitude(p3,Weight(20))
-a4=Attitude(p4,Weight(-10))
+a1=Attitude("p1",1,Weight(50))
+a2=Attitude("p2",1,Weight(30))
+a3=Attitude("p3",1,Weight(20))
+a4=Attitude("p4",1,Weight(-10))
 
 r1=Rule([p1,p2,p3])
 r2=Rule([p1,p4])
@@ -28,10 +28,15 @@ predrow=PredicateRow([p1,p2,p3,p4])
 rulerow=RuleRow([r1,r2])
 
 
+
+sol= Solutions([[]])
+
+'''print attrow.check(rulerow).row[0].list[2].sentence
 print attrow.bestsolve(rulerow)
+'''
 
-sol= Solutions([])
+attrow2= AttitudeRow([a1,a2,a4])
+rulerow2= RuleRow([r1])
 
-sol.insert(Weight(5),Weight(3),predrow)
-
-print sol.matrix[1].row
+print attrow.check(rulerow).row
+print attrow.issatisfied(rulerow)

@@ -11,14 +11,3 @@ class Rule:
     def add_incompatibility(self, tab, coordinates):
         self.list.append(tab[coordinates])
 
-
-
-
-
-
-
-
-
-
-
-
