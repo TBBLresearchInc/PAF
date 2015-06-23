@@ -4,6 +4,6 @@ __author__ = 'claraberard'
 
 
 class Predicate(Text):
-
-    def __init__(self,sentence):
-        self.sentence=sentence
+    def __init__(self, sentence, yesno):
+        Text.__init__(self, sentence)
+        self.yesno=yesno

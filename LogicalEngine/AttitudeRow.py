@@ -1,7 +1,8 @@
-from LogicalEngine.BinaryRow import BinaryRow
 from LogicalEngine.PredicateRow import PredicateRow
 from LogicalEngine.RuleRow import RuleRow
-from LogicalEngine.Solutions import Solution
+from LogicalEngine.Solutions import Solutions
+from logicalParse.predicate import Predicate
+from logicalParse.weight import Weight
 
 __author__ = 'Yannick'
 
@@ -9,25 +10,34 @@ __author__ = 'Yannick'
 
 
 class AttitudeRow:
+    row=[]
 
     def __init__(self,row):
         self.row=row
 
+
+
+
+    '''prend une liste d'attitudes et renvoie la liste des predicats correspondants'''
     def attrow_to_predrow(self):
         res= PredicateRow([])
         for attitude in self.row:
-            res.row.append(attitude.predicate())
+            res.row.append(attitude.predicate)
         return res
 
-    def check(self, ruleRow):
-        res= RuleRow([])
-        for i in range(0,len(ruleRow.row)):
-            rule=ruleRow[i]
-            for j in range(0, len(rule)):
-                predicate= rule[j]
-                if (predicate.weight != predicate.coordinates.getPredicate(predicate.coordinates,self).weight):
+
+    '''prend une liste d'attitudes et renvoie la liste des regles qu'elle ne respecte pas'''
+    def check(self, rulerow):
+        predrow=self.attrow_to_predrow()
+        res = RuleRow([])
+        for i in range(0, len(rulerow.row)):
+            rule=rulerow.row[i]
+            for j in range(0, len(rule.list)):
+                predicate= rule.list[j]
+                predicatefromattitude = predrow.sentence_to_predicate(predicate.sentence)
+                if predicate.yesno != 1:
                     break
-                elif(j==len(rule)-1):
+                elif j==(len(rule.list)-1):
                     res.row.append(rule)
 
         return res
@@ -39,21 +49,22 @@ class AttitudeRow:
     '''appelee si les attitudes de l'utilisateur sont incompatibles, renvoie
     un PredicateRow respectant les regles'''
 
+
+
     def bestsolve(self,rulerow):
-        msol=Solution([[]])
-        binrow=BinaryRow([ (0) for i in range(len(self.row))])
-        predlist= self.attrow_to_predrow()
+        msol=Solutions([[]])
+        predlist=self.attrow_to_predrow()
+        predrow=PredicateRow([ (predlist.row[i].sentence,0) for i in range(len(self.row))])
 
-        predrow=binrow.row.brow_to_predrow(predlist)
-        wmax=predlist.row[0].weight
+        wmax=Weight(0)
 
-        for i in range(0,2^(len(self.row))):
+        for i in range(0,(2**(len(self.row)))-1):
             if self.issatisfied(rulerow):
-                wtot=predrow.weight
-                msol.insert(wtot,wmax,binrow)
-
-            binrow.bplus()
-        return (msol.matrix[0])
+                wtot=predrow.totalweight(self)
+                msol.insert(wtot,wmax,predrow)
+            print predrow
+            predrow.bplus()
+        return msol.matrix[0]
 
 
 
@@ -65,13 +76,18 @@ class AttitudeRow:
             return False
 
 
-    '''si attitudes insatisfaites : renvoie les regles qui posent probleme'''
+    '''si attitudes insatisfaites : renvoie les regles qui posent probleme sous forme d'une liste de coordonnees'''
     def unsatisfiedrules(self,rulerow):
-        res=RuleRow([])
+        badrules=RuleRow([])
         if not(self.issatisfied(rulerow)):
-            res.row.append(self.check(rulerow))
+            badrules.row.append(self.check(rulerow))
 
-        return res
+        coordrow={}
+        coordrow['rouge']=[]
+        for rule in badrules.row:
+            coordrow['rouge'].append(rule.coordinate)
+
+        return coordrow
 
 
 
@@ -86,7 +102,7 @@ class AttitudeRow:
         firstpredicaterow= firstattituderow.attrow_to_predrow()
 
         for i in range(0,len(self.row)):
-            if optimizedpredicaterow.row[i].weight==firstpredicaterow[i].weight:
+            if optimizedpredicaterow.row[i].weight.value==firstpredicaterow[i].weight.value:
                 color['green'].append(optimizedpredicaterow.row[i].coordinate)
             else:
                 color['red'].append(optimizedpredicaterow.row[i].coordinate)

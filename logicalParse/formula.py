@@ -12,7 +12,9 @@ class Formula(Text):
     sentence = "="
 
     def __init__(self, sentence):
-        self.sentence = sentence
+        Text.__init__(self, sentence)
+
+
         self.nature = 4
 
     def isFormulaWeight(self):

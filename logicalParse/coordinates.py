@@ -1,3 +1,5 @@
+
+
 __author__ = 'claraberard'
 
 class Coordinates:
@@ -21,9 +23,8 @@ class Coordinates:
     def getColumn(self):
         return self.column
 
-    def toString(self):
+    def tostring(self):
         return '('+ str(self.line) + ',' + str(self.column) + ')'
-
 
 
 

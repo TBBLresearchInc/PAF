@@ -7,8 +7,9 @@ __author__ = 'claraberard'
 class FNon(Formula):
     coordinates = Coordinates(0, 0)
 
-    def __init__(self, coordinates):
-        self.coordinates=coordinates
+    def __init__(self, coordinates, sentence):
+        Formula.__init__(self, sentence)
+        self.coordinates = coordinates
         
     
 
