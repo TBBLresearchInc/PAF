@@ -45,16 +45,13 @@ class AttitudeRow:
 
 
 
-
     '''appelee si les attitudes de l'utilisateur sont incompatibles, renvoie
     un PredicateRow respectant les regles'''
-
-
 
     def bestsolve(self,rulerow):
         msol=Solutions([[]])
         predlist=self.attrow_to_predrow()
-        predrow=PredicateRow([Predicate((predlist.row[i]).sentence,0) for i in range(len(self.row))])
+        predrow=PredicateRow([Predicate(predlist.row[i].sentence,0) for i in range(len(self.row))])
 
         wmax=Weight(0)
 

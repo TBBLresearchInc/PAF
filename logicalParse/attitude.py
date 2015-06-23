@@ -10,7 +10,7 @@ class Attitude():
 
     def __init__(self, weight,predicate):
         self.predicate=predicate
-        self.weight = Weight(weight)
+        self.weight = weight
 
     def have_weight(self):
         return self.weight
