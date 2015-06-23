@@ -1,15 +1,18 @@
 __author__ = 'Yannick'
 
 
-class Solution:
+class Solutions:
 
     def __init__(self,matrix):
         self.matrix=matrix
 
-    def insert(self, wtot, wmax, binRow):
-        if (wtot==wmax):
-            self.matrix.append(binRow.bRow_to_predRow(binRow))
-        elif(wtot>wmax):
+    '''prend un ensemble de solution et insere une liste binaire ou non en fonction du poids total
+    de la liste de predicats correspondant'''
+    def insert(self, wtot, wmax, predrow):
+        if wtot.value == wmax.value:
+            self.matrix.append(predrow)
+        elif wtot.value>wmax.value:
             self.matrix=[[]]
-            self.matrix.append(binRow)
-            wmax=wtot
+            self.matrix.append(predrow)
+            wmax.value=wtot.value
+

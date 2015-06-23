@@ -10,7 +10,8 @@ class FWeight(Formula):
     weight = Weight(0)
     coordinates = Coordinates(0, 0)
 
-    def __init__(self, coordinates, weight):
+    def __init__(self, coordinates, weight, sentence):
+        Formula.__init__(self, sentence)
         self.coordinates = coordinates
         self.weight = weight
 

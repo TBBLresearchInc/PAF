@@ -8,7 +8,8 @@ __author__ = 'claraberard'
 class Tab(Grid):
     tab = {}
 
-    def __init__(self):
+    def __init__(self, grid):
+        Grid.__init__(self, grid)
         self.tab = {}
 
     def add_tab(self, case):
