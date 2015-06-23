@@ -54,7 +54,7 @@ class AttitudeRow:
     def bestsolve(self,rulerow):
         msol=Solutions([[]])
         predlist=self.attrow_to_predrow()
-        predrow=PredicateRow([ (predlist.row[i].sentence,0) for i in range(len(self.row))])
+        predrow=PredicateRow([Predicate((predlist.row[i]).sentence,0) for i in range(len(self.row))])
 
         wmax=Weight(0)
 
