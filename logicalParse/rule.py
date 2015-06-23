@@ -1,20 +1,17 @@
-from logicalParse.coordinates import Coordinates
-from logicalParse.text import Text
-
 __author__ = 'claraberard'
 
 
-class Rule(Text):
+class Rule:
 
-    def __init__(self,sentence,predrow):
-        self.predrow=predrow
-        self.sentence=sentence
+    list = []
 
-    def getRule(self):
-        return self.sentence
+    def __init__(self, list):
+        self.list = list
 
-    def setRule(self, newrule):
-        self.sentence = newrule
+    def add_incompatibility(self, tab, coordinates):
+        self.list.append(tab[coordinates])
+
+
 
 
 
