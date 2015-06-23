@@ -1,3 +1,5 @@
+from LogicalEngine.PredicateRow import PredicateRow
+
 __author__ = 'Yannick'
 
 
@@ -11,8 +13,12 @@ class Solutions:
     def insert(self, wtot, wmax, predrow):
         if wtot.value == wmax.value:
             self.matrix.append(predrow)
+            print str(wtot.value)
         elif wtot.value>wmax.value:
             self.matrix=[[]]
-            self.matrix.append(predrow)
+            self.matrix[0]=predrow
             wmax.value=wtot.value
+            print str(wtot.value)
+
+
 

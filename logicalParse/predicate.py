@@ -7,3 +7,6 @@ class Predicate(Text):
     def __init__(self, sentence, yesno):
         Text.__init__(self, sentence)
         self.yesno=yesno
+
+    def tostring(self):
+        return "pred:["+ self.sentence +","+str(self.yesno)+"]"
