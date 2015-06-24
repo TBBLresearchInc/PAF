@@ -11,5 +11,5 @@ class Coordinates_tab:
         self.column = column
         self.row = row
 
-    def coordinates_to_string(self):
+    def coordinates_to_int(self):
         return Coordinates(self.row, (ord(self.column)-64))

@@ -40,9 +40,3 @@ class Text:
             return True
         else:
             return False
-
-
-
-
-
-
