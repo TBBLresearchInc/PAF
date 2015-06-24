@@ -9,89 +9,90 @@ __author__ = 'claraberard'
 
 
 class Formula(Text):
-    sentence = "="
 
     def __init__(self, sentence):
         Text.__init__(self, sentence)
 
-
-        self.nature = 4
-
     def isFormulaWeight(self):
-        return self.get_inside()[0] == '&'
+        return self.sentence[0] == "$"
 
     def isFormulaNon(self):
-        return self.get_inside()[0:2] == "NON"
+        return self.sentence[0:3] == "NON"
 
     def isFormulaResult(self):
-        return self.get_inside()[0] == "("
+        return self.sentence[0] == "("
 
-    def is_number(s):
+    def is_number(self, s):
         try:
             float(s)
             return True
         except ValueError:
             return False
 
-    def to_logical_rule(self, tab):
+    def is_alpha(self,s):
+        return not(self.is_number(s))
+
+    def to_logical_rule(self, tab, coordinates):
         """
         :type tab: Tab
         """
-        R = Rule([])
-        s = self.sentence[2:(len(self.sentence) - 2)]
+        R = Rule([], coordinates)
+        s = self.sentence[3:(len(self.sentence)-1)]
         while len(s) != 0:
             i = 0
-            while s[i].isalpha():
+            while self.is_alpha(s[i]):
                 i += 1
+
             l = s[0:i]
-            j = i + 1
-            while s[j].is_number():
+
+            j = i+1
+            while j<len(s) and self.is_number(s[j]):
                 j += 1
-            n = float(s[(i + 1): j])
-            c = Coordinates_tab(n, l).coordinates_to_string()
-            R.list.add_incompability(tab, c)
+            n = float(s[i: j])
+            c = Coordinates_tab(n, l).coordinates_to_int()
+            R.add_incompatibility(tab, c)
             s = s[(j + 1):]
-        return R
+        tab.rule_list.append(R)
+
 
     def to_fweight_formula(self):
-        s = self.sentence[2:(len(self.sentence) - 1)]
+        s = self.sentence[1:(len(self.sentence))]
         i = 0
-        while s[i].is_number():
+        while self.is_number(s[i]):
             i += 1
         l = float(s[0:i])
-        j = i + 1
-        while s[j].is_alpha():
+        j = i
+        while self.is_alpha(s[j]):
             j += 1
-        m = s[(i + 1): j]
-        k = j + 1
-        while s[k].is_number():
+        m = s[i:j]
+        k = j
+        while k < len(s) and self.is_number(s[k]):
             k += 1
-        n = float(s[(j+1):k])
+        n = float(s[j:k])
         weight = Weight(l)
-        c = Coordinates_tab(n, m).coordinates_to_string()
-
-        f= FWeight(c,weight)
+        c = Coordinates_tab(n, m).coordinates_to_int()
+        f = FWeight(c, weight)
         return f
 
     def to_fnon_formula(self):
-        s = self.sentence[4:(len(self.sentence) - 1)]
+        s = self.sentence[3:(len(self.sentence))]
         i = 0
-        while s[i].is_alpha():
+        while self.is_alpha(s[i]):
             i += 1
         m = s[0: i]
-        j = i + 1
-        while s[j].is_number():
+        j = i
+        while j < len(s) and self.is_number(s[j]):
             j += 1
-        n = float(s[(i+1):j])
-        c = Coordinates_tab(n, m).coordinates_to_string()
+        n = float(s[i:j])
+        c = Coordinates_tab(n, m).coordinates_to_int()
         f= FNon(c)
         return f
 
-
-
-
-
-
-
-
-
+    def fsolve(self, tab, coordinates):
+        if self.isFormulaWeight():
+            self.to_fweight_formula().weight_solve(tab, coordinates)
+        else:
+            if self.isFormulaNon():
+                self.to_fnon_formula().non_solve(tab, coordinates)
+            else:
+                pass

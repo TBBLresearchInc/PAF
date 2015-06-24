@@ -26,10 +26,9 @@ class Grid:
         if not([row, column] in self.grid_pos):
             self.grid_pos.append([row, column])
 
-    def __str__(self):
-        return str(self.tab)
 
     def get_cell(self, row, column):
+
         self.pos = GridPos(row, column)
         return self.grid[self.pos.toStr()]["content"]
 

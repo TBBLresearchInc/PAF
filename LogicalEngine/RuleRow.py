@@ -9,3 +9,9 @@ class RuleRow:
        self.row=row
 
    row=[]
+
+   def tostring(self):
+        s="rulerow :("
+        for rule in self.row:
+            s+= rule.tostring()+", "
+        return s+")"
