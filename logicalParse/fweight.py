@@ -16,7 +16,6 @@ class FWeight():
     def weight_solve(self, tab, coordinates):
         s = tab.tab[self.coordinates].text.sentence
         a = Attitude(s, self.weight, 1)
-        print "coordinates"+str(coordinates)
         tab.tab[coordinates].text = a
         tab.tab[coordinates].ref_predicate = self.coordinates
         tab.tab[self.coordinates].ref_predicate = coordinates

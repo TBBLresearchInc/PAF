@@ -12,7 +12,8 @@ class Rule:
 
 
     def add_incompatibility(self, tab, coordinates):
-        self.list.append(tab[coordinates])
+        print coordinates
+        self.list.append(tab.tab[coordinates])
 
     def tostring(self):
         s="regle :("

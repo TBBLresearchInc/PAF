@@ -28,7 +28,6 @@ class Case():
             Formula(self.text.sentence[1:]).fsolve(tabu, self.coordinates)
         else:
             tabu.tab[self.coordinates] = Predicate(self.text.sentence, 1)
-            print(tabu.tab[self.coordinates].tostring())
 
 
 

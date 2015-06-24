@@ -8,7 +8,7 @@ class FRule:
         self.list = list
 
     def __addRule__ (self, rule):
-        list.append(rule)
+        self.list.append(rule)
 
     def frule_solve(self, tab):
         pass
