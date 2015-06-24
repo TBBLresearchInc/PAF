@@ -1,15 +1,14 @@
-from logicalParse import Coordinates
-
 __author__ = 'claraberard'
 
 
 class Rule:
 
     list = []
-    coordinates = Coordinates(0,0)
+    coordinates = (0,0)
 
-    def __init__(self, list):
+    def __init__(self, list, coordinates):
         self.list = list
+        self.coordinates = coordinates
 
     def add_incompatibility(self, tab, coordinates):
         self.list.append(tab[coordinates])

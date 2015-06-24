@@ -16,6 +16,6 @@ class Attitude(Predicate):
 
     #pour obtenir le poids de l'attitude
 
-    def have_weight(self):
+    def get_weight(self):
         return self.weight
 

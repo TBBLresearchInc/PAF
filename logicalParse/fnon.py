@@ -1,13 +1,11 @@
-from logicalParse import Coordinates
 from logicalParse.attitude import Attitude
 
 __author__ = 'claraberard'
 
 class FNon():
-    coordinates = Coordinates(0, 0)
+    coordinates = (0, 0)
 
     def __init__(self, coordinates):
-        assert isinstance(coordinates, Coordinates)
         self.coordinates=coordinates
 
     def non_solve(self, tab, casedepart):
