@@ -1,4 +1,5 @@
 from logicalParse.attitude import Attitude
+from logicalParse.predicate import Predicate
 
 __author__ = 'claraberard'
 
@@ -8,14 +9,13 @@ class FNon():
     def __init__(self, coordinates):
         self.coordinates=coordinates
 
-    def non_solve(self, tab, casedepart):
+    def non_solve(self, tab, coordinates):
         """
         :rtype : object
         """
-        weight = - tab[self.coordinates].get_weight()
-        t = tab[casedepart.coordinates].text
-        a = Attitude(t, weight)
-        tab[self.coordinates].text = a
-        tab[casedepart.coordinates].ref_non = self.coordinates
-        tab[self.coordinates].ref_non = casedepart.coordinates
-        tab[casedepart].nature = 2
+        t = tab.tab[coordinates].text.sentence
+        tab.tab[coordinates].text = Predicate(t, 1)
+        a = Predicate(t, -1)
+        tab.tab[self.coordinates].text = a
+        tab.tab[coordinates].ref_non = self.coordinates
+        tab.tab[self.coordinates].ref_non = coordinates
