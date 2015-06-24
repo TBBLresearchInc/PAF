@@ -21,11 +21,13 @@ class PredicateRow:
 
     def sentence_to_predicate(self,sentence):
         for predicate in self.row:
-            assert isinstance(predicate, Predicate)
             if predicate.sentence == sentence:
                 return predicate
 
-
+    def coordinate_to_predicate(self,coordinate):
+        for predicate in self.row:
+            if predicate.coordinate == coordinate :
+                return predicate
 
     '''sert a generer l'ensemble de toutes les propositions : a une liste de predicats (qui represente un entier n en binaire),
     on renvoie n+1 en binaire'''
@@ -54,7 +56,7 @@ class PredicateRow:
             rule=rulerow.row[i]
             for j in range(0, len(rule.list)):
                 predicate= rule.list[j]
-                predicatefromrow = self.sentence_to_predicate(predicate.sentence)
+                predicatefromrow = self.coordinate_to_predicate(predicate.coordinaten )
                 if predicate.yesno != predicatefromrow.yesno:
                     break
                 elif j==(len(rule.list)-1):

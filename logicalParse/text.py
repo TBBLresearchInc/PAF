@@ -10,9 +10,10 @@ class Text:
     nature = 0
     sentence = ""
 
-    def __init__(self, sentence):
+    def __init__(self, sentence,coordinate):
         self.sentence = sentence
         self.nature = 0
+        self.coordinate=coordinate
 
     def have_weight(self):
         return 0
