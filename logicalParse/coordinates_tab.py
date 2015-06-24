@@ -1,5 +1,3 @@
-from logicalParse import Coordinates
-
 __author__ = 'claraberard'
 
 class Coordinates_tab:
@@ -12,4 +10,4 @@ class Coordinates_tab:
         self.row = row
 
     def coordinates_to_int(self):
-        return Coordinates(self.row, (ord(self.column)-64))
+        return (self.row, (ord(self.column[0]))-64)

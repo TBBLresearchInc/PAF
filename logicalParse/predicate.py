@@ -1,12 +1,13 @@
+from logicalParse.text import Text
+
 __author__ = 'claraberard'
 
 
-class Predicate():
-    sentence = ""
+class Predicate(Text):
     yesno = 1
 
     def __init__(self, sentence, yesno):
-        self.sentence = sentence
+        Text.__init__(self,sentence)
         self.yesno = yesno
 
     def tostring(self):
