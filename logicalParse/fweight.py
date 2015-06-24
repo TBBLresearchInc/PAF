@@ -14,10 +14,10 @@ class FWeight():
         self.coordinates = coordinates
         self.weight = weight
 
-    def weight_solve(self, tab, casedepart):
+    def weight_solve(self, tab, coordinates):
         t = tab[self.coordinates].text
-        a = Attitude(t, self.weight)
-        tab[casedepart.coordinates].text = a
-        tab[casedepart.coordinates].ref_predicate = self.coordinates
-        tab[self.coordinates].ref_predicate = casedepart.coordinates
-        tab[casedepart].nature = 2
+        yesno = tab[self.coordinates].yesno
+        a = Attitude(t, self.weight, yesno)
+        tab[coordinates].text = a
+        tab[coordinates].ref_predicate = self.coordinates
+        tab[self.coordinates].ref_predicate = coordinates

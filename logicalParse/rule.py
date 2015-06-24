@@ -1,9 +1,12 @@
+from logicalParse import Coordinates
+
 __author__ = 'claraberard'
 
 
 class Rule:
 
     list = []
+    coordinates = Coordinates(0,0)
 
     def __init__(self, list):
         self.list = list
