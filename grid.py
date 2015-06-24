@@ -40,6 +40,7 @@ class Grid:
 
 
     def get_cell(self, row, column):
+
         self.pos = GridPos(row, column)
         return self.grid[self.pos.toStr()]["content"]
 
