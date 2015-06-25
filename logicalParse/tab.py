@@ -80,3 +80,49 @@ class Tab():
         for case in self.attitude_caselist:
                 res.row.append(case.text)
         return res
+
+    def clash(self):
+        self.solve()
+        attrow=self.get_attrow()
+        rulerow=self.rule_list
+
+        badrules=attrow.unsatisfiedrules(rulerow)
+        res={}
+        res["cells"]=[]
+        for rule in rulerow.row:
+                print rule.tostring()
+                (a,b)=rule.coordinates
+                cell={}
+                cell["row"]=a
+                cell["column"]=b
+                if badrules.row.__contains__(rule):
+                    cell["result"]="error"
+                else:
+                    cell["result"]="valid"
+                res["cells"].append(cell)
+        return res
+
+    print
+
+
+    def optimize(self):
+        self.solve()
+        attrow=self.get_attrow()
+        rulerow=self.rule_list
+
+        predrow= attrow.bestsolve(rulerow)
+
+        res={}
+        res["cells"]=[]
+
+        for pred in predrow.row:
+            (a,b)=pred.get_coordinates()
+            cell={}
+            cell["row"]=a
+            cell["column"]=b
+            if pred.yesno==1:
+                cell["result"]="valid"
+            else:
+                cell["result"]="error"
+            res["cells"].append(cell)
+        return res
