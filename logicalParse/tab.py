@@ -38,7 +38,6 @@ class Tab():
     #prend un tableau tab et le convertit en un tableau. Les cases de predicats se voient attribues un predicat en attribut." \
     #Les regles sont ajoutees a l'attribut rule_list de tab"
 
-    #yannick la distinction de cas ne sert a rien!
     def solve(self):
         for coord in self.tab:
             if self.tab[coord].text.sentence[0] != "=":
@@ -73,6 +72,7 @@ class Tab():
 
     def clash(self):
         self.solve()
+        print self.predicate_caselist
         attrow=self.get_attrow()
         rulerow=self.rule_list
 
@@ -80,7 +80,6 @@ class Tab():
         res={}
         res["cells"]=[]
         for rule in rulerow.row:
-                print rule.tostring()
                 (a,b)=rule.coordinates
                 cell={}
                 cell["row"]=a
@@ -106,7 +105,8 @@ class Tab():
         res["cells"]=[]
 
         for pred in predrow.row:
-            (a,b)=pred.get_coordinates()
+            (a,b)=pred.get_coordinate(self)
+
             cell={}
             cell["row"]=a
             cell["column"]=b

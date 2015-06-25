@@ -36,10 +36,9 @@ class Case():
                 tabu.attitude_caselist.append(tabu.tab[self.coordinates]) #si de plus on a une formule creant une attitude il faut ajouter la case dans la liste des attributs du tableau
 
         else: #pas de signe egal
-            tabu.tab[self.coordinates] = Case(self.coordinates,Predicate(self.text.sentence, 1)) #si la case ne commence pas par le signe = il faut convertir le text en predicat
+            tabu.tab[self.coordinates] = Case(self.coordinates,Predicate(self.text.sentence,1)) #si la case ne commence pas par le signe = il faut convertir le text en predicat
             tabu.predicate_caselist.append(tabu.tab[self.coordinates]) #puis il faut ajouter la case dans la liste des predicats du tableau
+
 
     def tostring(self):
         return "case : "+str(self.coordinates)+", "+self.text.sentence
-
-
