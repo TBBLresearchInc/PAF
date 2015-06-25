@@ -2,6 +2,7 @@ from logicalParse.formula import Formula
 from logicalParse.predicate import Predicate
 from logicalParse.text import Text
 
+
 __author__ = 'claraberard'
 
 class Case():
@@ -23,12 +24,21 @@ class Case():
         return (self.ref_predicate != self.coordinates) | (self.ref_non != self.coordinates)
 
     def case_solve(self, tabu):
-        print self.text
         if self.text.sentence[0] == "=":
+            if self.text.sentence[0:2]== "=$":
+                bin=True
+            else:
+                bin =False
+
             Formula(self.text.sentence[1:]).fsolve(tabu, self.coordinates)
+            if bin:
+                tabu.attitude_caselist.append(tabu.tab[self.coordinates])
+
         else:
-            tabu.tab[self.coordinates] = Predicate(self.text.sentence, 1)
+            tabu.tab[self.coordinates] = Case(self.coordinates,Predicate(self.text.sentence, 1))
+            tabu.predicate_caselist.append(tabu.tab[self.coordinates])
 
-
+    def tostring(self):
+        return "case : "+str(self.coordinates)+", "+self.text.sentence
 
 

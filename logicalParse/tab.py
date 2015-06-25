@@ -1,5 +1,9 @@
+from LogicalEngine.AttitudeRow import AttitudeRow
+from LogicalEngine.PredicateRow import PredicateRow
+from LogicalEngine.RuleRow import RuleRow
 from grid import Grid
 from logicalParse.case import Case
+from logicalParse.predicate import Predicate
 
 __author__ = 'claraberard'
 
@@ -8,9 +12,13 @@ class Tab():
     # dictionnaire de case (a un attribut coordonnees associe la case correspondante)
 
     tab = {}
-    rule_list = []
+    predicate_caselist=[]
+    attitude_caselist=[]
+    rule_list = RuleRow([])
 
-    def __init__(self, tab, rule_list):
+    def __init__(self, tab,rule_list, predicate_caselist, attitude_caselist):
+        self.predicate_caselist=predicate_caselist
+        self.attitude_caselist=attitude_caselist
         self.tab = tab
         self.rule_list = rule_list
 
@@ -37,9 +45,38 @@ class Tab():
 
     #pour recuperer le Text de la case
     def get_inside(self, coordinates):
-        assert isinstance(coordinates, Coordinates)
         return self.tab[coordinates].text
 
+
+    "prend un tableau tab et le convertit en un tableau. Les cases de predicats se voient attribues un predicat en attribut." \
+    "Les regles sont ajoutees a l'attribut rule_list de tab"
     def solve(self):
-        for case in self.tab:
-            case.case_solve(self)
+        for coord in self.tab:
+            if self.tab[coord].text.sentence[0] != "=":
+                self.tab[coord].case_solve(self)
+
+        for coord in self.tab:
+            if self.tab[coord].text.sentence[0:4] == "=NON":
+                self.tab[coord].case_solve(self)
+
+        for coord in self.tab:
+            if self.tab[coord].text.sentence[0:2] == "=$":
+                self.tab[coord].case_solve(self)
+
+        for coord in self.tab:
+
+            if (self.tab[coord].text.sentence[0] == "=") & (self.tab[coord].text.sentence[0:4] != "=NON") & (self.tab[coord].text.sentence[0:2] != "=$"):
+                self.tab[coord].case_solve(self)
+
+    "prend un tableau, convertit sa liste de case contenue dans tab et renvoie la liste des predicats contenus"
+    def get_predrow(self):
+        res=PredicateRow([])
+        for case in self.predicate_caselist:
+            res.row.append(case.text)
+        return res
+
+    def get_attrow(self):
+        res=AttitudeRow([])
+        for case in self.attitude_caselist:
+                res.row.append(case.text)
+        return res

@@ -22,6 +22,9 @@ class Formula(Text):
     def isFormulaResult(self):
         return self.sentence[0] == "("
 
+    def isFormulaRule(self):
+        return self.sentence[0:1] == "R"
+
     def is_number(self, s):
         try:
             float(s)
@@ -32,14 +35,17 @@ class Formula(Text):
     def is_alpha(self,s):
         return not(self.is_number(s))
 
+
     def to_logical_rule(self, tab, coordinates):
-        """
-        :type tab: Tab
-        """
         R = Rule([], coordinates)
-        s = self.sentence[3:(len(self.sentence)-1)]
+        s = self.sentence[2:(len(self.sentence)-1)]
         while len(s) != 0:
             i = 0
+            if s[i]=="-":
+                yesno=-1
+                s= s[1:]
+            else:
+                yesno=1
             while self.is_alpha(s[i]):
                 i += 1
 
@@ -48,16 +54,23 @@ class Formula(Text):
             j = i+1
             while j<len(s) and self.is_number(s[j]):
                 j += 1
-            n = float(s[i: j])
+            n = int(s[i: j])
+
             c = Coordinates_tab(n, l).coordinates_to_int()
-            R.add_incompatibility(tab, c)
+            R.add_incompatibility(tab, c, yesno)
             s = s[(j + 1):]
-        tab.rule_list.append(R)
+        tab.tab[coordinates]=R
+        tab.rule_list.row.append(R)
 
 
     def to_fweight_formula(self):
         s = self.sentence[1:(len(self.sentence))]
         i = 0
+        if s[i]=="-":
+                sign=-1
+                s= s[1:]
+        else:
+                sign=1
         while self.is_number(s[i]):
             i += 1
         l = float(s[0:i])
@@ -69,7 +82,7 @@ class Formula(Text):
         while k < len(s) and self.is_number(s[k]):
             k += 1
         n = float(s[j:k])
-        weight = Weight(l)
+        weight = Weight(l*sign)
         c = Coordinates_tab(n, m).coordinates_to_int()
         f = FWeight(c, weight)
         return f
@@ -91,8 +104,8 @@ class Formula(Text):
     def fsolve(self, tab, coordinates):
         if self.isFormulaWeight():
             self.to_fweight_formula().weight_solve(tab, coordinates)
-        else:
-            if self.isFormulaNon():
+        elif self.isFormulaNon():
                 self.to_fnon_formula().non_solve(tab, coordinates)
-            else:
-                pass
+        elif self.isFormulaRule():
+            self.to_logical_rule(tab,coordinates)
+

@@ -19,4 +19,3 @@ class FWeight():
         tab.tab[coordinates].text = a
         tab.tab[coordinates].ref_predicate = self.coordinates
         tab.tab[self.coordinates].ref_predicate = coordinates
-        print (tab.tab[coordinates].text.sentence)

@@ -32,7 +32,6 @@ class AttitudeRow:
         res = PredicateRow([])
 
         for attitude in self.row:
-            assert isinstance(attitude,Attitude)
             if attitude.weight.value < 0:
                 res.row.append(Predicate(attitude.sentence,-attitude.yesno))
             else:

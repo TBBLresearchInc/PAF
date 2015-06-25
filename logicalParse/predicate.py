@@ -12,3 +12,10 @@ class Predicate(Text):
 
     def tostring(self):
         return "pred:[" + self.sentence + "," + str(self.yesno) + "]"
+
+    def get_coordinate(self,tab):
+        for coord in tab.tab:
+            if tab.tab[coord].tostring()[0:5] != "regle":
+                if tab.tab[coord].text.sentence==self.sentence:
+                    return coord
+        raise Exception('erreur dans get_coordinate : aucune coordonnee trouvee')

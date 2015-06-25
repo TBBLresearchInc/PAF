@@ -21,7 +21,6 @@ class PredicateRow:
 
     def sentence_to_predicate(self,sentence):
         for predicate in self.row:
-            assert isinstance(predicate, Predicate)
             if predicate.sentence == sentence:
                 return predicate
 

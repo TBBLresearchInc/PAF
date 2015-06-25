@@ -18,6 +18,8 @@ class GridPos:
     def get_column(self):
         return self.pos[1]
 
+
+
 class Grid:
 
     """ Classe decrivant le tableau
