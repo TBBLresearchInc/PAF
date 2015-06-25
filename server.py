@@ -75,8 +75,6 @@ class Action:
             return tab_serv.clash()
 
 
-
-
 grid = Grid({})
 
 tab_serv = Tab({}, RuleRow([]), PredicateRow([]), AttitudeRow([]))
