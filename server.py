@@ -61,7 +61,9 @@ class Json:
         # En fonction des calculs effectues, il faudra appeler set_color(row, column)
 
         # print(str(grid.get_colors()))
-        return str(json.dumps(grid.get_colors())) # return colors to fill the cells after some data process (not yet)
+
+        print(str(json.dumps(grid.get_colors())))
+        return str(json.dumps(grid.get_colors()))  # return colors to fill the cells after some data process (not yet)
 
 class Action:
     def GET(self):
