@@ -59,6 +59,7 @@ class Formula(Text):
             c = Coordinates_tab(n, l).coordinates_to_int()      # on convertit A1 en (1,1)
             R.add_incompatibility(tab, c, yesno)                # on ajoute la case dans la liste des incompabilites
             s = s[(j + 1):]                                     # s = A2,A3)
+
         tab.tab[coordinates]=R
         tab.rule_list.row.append(R)                             #on ajoute la regle a la liste des regles du tableau
 

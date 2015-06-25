@@ -13,7 +13,6 @@ class Solutions:
     def insert(self, wtot, wmax, predrow):
         if wtot.value == wmax.value:
             self.matrix.append(predrow)
-            print str(wtot.value)
         elif wtot.value>wmax.value:
             self.matrix=[[]]
             self.matrix[0]=predrow

@@ -10,8 +10,8 @@ class Attitude(Predicate):
 
     weight = Weight(0)
 
-    def __init__(self, sentence, weight, yesno):
-        Predicate.__init__(self, sentence, yesno)
+    def __init__(self, sentence, weight, coordinates,yesno):
+        Predicate.__init__(self, sentence,yesno)
         self.weight = weight
 
     #pour obtenir le poids de l'attitude
@@ -21,3 +21,6 @@ class Attitude(Predicate):
 
     def tostring(self):
         return "attitude:[" + self.sentence + "," +str(self.weight.value) +", " + str(self.yesno) + "]"
+
+    def __name__(self):
+        return "attitude"
