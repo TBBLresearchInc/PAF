@@ -44,7 +44,7 @@ class Json:
         column = int(data["column"])
         grid.update(row, column, content)
 
-        tab = Tab({}, RuleRow([]), PredicateRow([]), AttitudeRow([]))
+        tab = Tab({}, RuleRow([]), [], [])
 
         for i in range(0, grid.nb_of_cells()):
             cur_coords = grid.get_coords(i)
@@ -52,7 +52,6 @@ class Json:
             case = Case(cur_coords, Text(grid.get_cell(cur_coords[0], cur_coords[1])))
 
             tab.add_tab(case)
-
 
         ####################################
         # data process from logical engine #
