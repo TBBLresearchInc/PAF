@@ -32,6 +32,9 @@ class Index:
         return "Home Page"
 
 class Json:
+
+    tab_serv = Tab({}, RuleRow([]), [], [])
+
     def GET(self):
         user_data = web.input(id = "no data")
         return user_data.id
@@ -76,13 +79,12 @@ class Action:
 
         if data["action"] == "conflict":
             print("CLASH : ")
-            print(tab_serv.clash())
-            return str(json.dumps(tab_serv.clash()))
+            print(Json.tab_serv.clash())
+            return str(json.dumps(Json.tab_serv.clash()))
 
 
 grid = Grid({})
 
-tab_serv = Tab({}, RuleRow([]), [], [])
 
 if __name__ == "__main__":
    app = web.application(urls, globals()) 
