@@ -83,11 +83,6 @@ class Grid:
         return len(self.grid_pos)
 
 
-grid_t = Grid({})
-
-grid_t.update(1, 1, "salut")
-
-print(grid_t.get_cell(1, 1))
 
 
 
