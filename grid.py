@@ -89,20 +89,6 @@ class Grid:
 
 
 
-grid_t = Grid({})
-
-grid_t.update(1, 1, "salut")
-
-grid_t.update(1, 2, "bonjour")
-
-grid_t.update(2, 2, "au revoir")
-
-coords = grid_t.get_coords(0)
-
-print(type(coords))
-print(coords)
-
-print(type(grid_t.get_cell(coords[0], coords[1])))
 
 
 tabu = Tab({}, RuleRow([]),[], [])
