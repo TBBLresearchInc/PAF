@@ -129,19 +129,5 @@ print(tabu.clash())
 
 
 
-grid = Grid({})
-
-grid.update(1, 1, "content")
-
-grid.update(1, 2, "content1")
-
-print(grid.nb_of_cells())
-
-grid.delete_cell(1, 1)
-
-print(grid.nb_of_cells())
-
-
-
 
 
