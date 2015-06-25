@@ -76,7 +76,7 @@ class Action:
 
         if data["action"] == "conflict":
             print(tab_serv.clash())
-            return tab_serv.clash()
+            return json.dumps(tab_serv.clash())
 
 
 grid = Grid({})
