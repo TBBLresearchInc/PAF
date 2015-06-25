@@ -70,6 +70,7 @@ class Action:
     def GET(self):
         user_data = web.input(id = "no data")
         return user_data.id
+
     def POST(self):
         data = web.input() #retrieve input data from client
 
