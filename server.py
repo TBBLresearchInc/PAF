@@ -86,7 +86,7 @@ class Action:
 
         if data["action"] == "conflict":
             print("CLASH : ")
-            print(tab_serv.clash())
+            # print(tab_serv.clash())
             return str(json.dumps(tab_serv.clash()))
 
 
