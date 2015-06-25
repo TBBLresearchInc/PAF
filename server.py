@@ -49,7 +49,7 @@ class Json:
         for i in range(0, grid.nb_of_cells()):
             cur_coords = grid.get_coords(i)
 
-            case = Case(cur_coords, Text(grid.get_cell(cur_coords)))
+            case = Case(cur_coords, Text(grid.get_cell(cur_coords[0], cur_coords[1])))
 
             tab.add_tab(case)
 
