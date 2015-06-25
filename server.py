@@ -44,14 +44,14 @@ class Json:
         column = int(data["column"])
         grid.update(row, column, content)
 
-        tab = Tab({}, RuleRow([]), [], [])
+        tab_serv = Tab({}, RuleRow([]), [], [])
 
         for i in range(0, grid.nb_of_cells()):
             cur_coords = grid.get_coords(i)
 
-            case = Case(cur_coords, Text(grid.get_cell(cur_coords[0], cur_coords[1])))
+            case_serv = Case(cur_coords, Text(grid.get_cell(cur_coords[0], cur_coords[1])))
 
-            tab.add_tab(case)
+            tab_serv.add_tab(case_serv)
 
         ####################################
         # data process from logical engine #
@@ -72,13 +72,13 @@ class Action:
         data = web.input() #retrieve input data from client
 
         if data["action"] == "conflict":
-            return tab.clash()
+            return tab_serv.clash()
 
 
 
 grid = Grid({})
 
-tab = Tab({}, RuleRow([]), PredicateRow([]), AttitudeRow([]))
+tab_serv = Tab({}, RuleRow([]), PredicateRow([]), AttitudeRow([]))
 
 
 if __name__ == "__main__":

@@ -1,3 +1,8 @@
+from LogicalEngine.RuleRow import RuleRow
+from logicalParse.case import Case
+from logicalParse.tab import Tab
+from logicalParse.text import Text
+
 __author__ = 'quentinleroy'
 
 # Quentin Leroy
@@ -82,6 +87,47 @@ class Grid:
     def nb_of_cells(self):
         return len(self.grid_pos)
 
+
+
+grid_t = Grid({})
+
+grid_t.update(1, 1, "salut")
+
+grid_t.update(1, 2, "bonjour")
+
+grid_t.update(2, 2, "au revoir")
+
+coords = grid_t.get_coords(0)
+
+print(type(coords))
+print(coords)
+
+print(type(grid_t.get_cell(coords[0], coords[1])))
+
+
+tabu = Tab({}, RuleRow([]),[], [])
+
+
+case1 = Case((1,1), Text("p1"))
+case2 = Case((1,2), Text("p2"))
+case3 = Case((2,1), Text("p3"))
+case4 = Case((3,1), Text("=$90A1"))
+case5 = Case((1,0), Text("=$10A2"))
+case6 = Case((3,3),Text("=$10B1"))
+case7 = Case((5,9), Text("=R(A1,-A2)"))
+case8 = Case((5,8), Text("=R(A1,-B1)"))
+
+tabu.add_tab(case1)
+tabu.add_tab(case2)
+tabu.add_tab(case2)
+tabu.add_tab(case3)
+tabu.add_tab(case4)
+tabu.add_tab(case5)
+tabu.add_tab(case6)
+tabu.add_tab(case7)
+tabu.add_tab(case8)
+
+print(tabu.clash())
 
 
 
