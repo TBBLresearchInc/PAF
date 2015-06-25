@@ -91,27 +91,34 @@ class Grid:
 
 
 
-tabu = Tab({}, RuleRow([]),[], [])
+tabu = Tab({}, RuleRow([]),[] , [])
 
 
-case1 = Case((1,1), Text("p1"))
-case2 = Case((1,2), Text("p2"))
-case3 = Case((2,1), Text("p3"))
-case4 = Case((3,1), Text("=$90A1"))
-case5 = Case((1,0), Text("=$10A2"))
-case6 = Case((3,3),Text("=$10B1"))
-case7 = Case((5,9), Text("=R(A1,-A2)"))
-case8 = Case((5,8), Text("=R(A1,-B1)"))
+case = Case((1,1), Text("p1"))
+tabu.add_tab(case)
 
-tabu.add_tab(case1)
-tabu.add_tab(case2)
-tabu.add_tab(case2)
-tabu.add_tab(case3)
-tabu.add_tab(case4)
-tabu.add_tab(case5)
-tabu.add_tab(case6)
-tabu.add_tab(case7)
-tabu.add_tab(case8)
+case = Case((1,2), Text("p2"))
+tabu.add_tab(case)
+
+case = Case((2,1), Text("p3"))
+tabu.add_tab(case)
+
+case = Case((3,1), Text("=$90A1"))
+tabu.add_tab(case)
+
+case = Case((1,0), Text("=$10A2"))
+tabu.add_tab(case)
+
+case = Case((3,3),Text("=$10B1"))
+tabu.add_tab(case)
+
+case = Case((5,9), Text("=R(A1,-A2)"))
+tabu.add_tab(case)
+
+case = Case((5,8), Text("=R(A1,-B1)"))
+tabu.add_tab(case)
+
+
 
 print(tabu.clash())
 

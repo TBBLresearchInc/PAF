@@ -46,6 +46,8 @@ class Json:
 
         tab_serv = Tab({}, RuleRow([]), [], [])
 
+
+
         for i in range(0, grid.nb_of_cells()):
             cur_coords = grid.get_coords(i)
 
@@ -72,12 +74,13 @@ class Action:
         data = web.input() #retrieve input data from client
 
         if data["action"] == "conflict":
+            print(tab_serv.clash())
             return tab_serv.clash()
 
 
 grid = Grid({})
 
-tab_serv = Tab({}, RuleRow([]), PredicateRow([]), AttitudeRow([]))
+tab_serv = Tab({}, RuleRow([]), [], [])
 
 
 if __name__ == "__main__":
