@@ -83,21 +83,4 @@ class Grid:
         return len(self.grid_pos)
 
 
-grid = Grid({})
-
-grid.update(1, 1, "contensdft")
-grid.update(1, 2, "salut")
-
-print(grid.nb_of_cells())
-
-print(grid.get_cell(1, 1))
-
-print(grid.get_grid_pos())
-
-print(grid.get_grid())
-
-print(grid.get_coords(0))
-
-
-
 

@@ -49,11 +49,9 @@ class Json:
         for i in range(0, grid.nb_of_cells()):
             cur_coords = grid.get_coords(i)
 
-            case = Case( cur_coords, Text(grid.get_cell(cur_coords)))
+            case = Case(cur_coords, Text(grid.get_cell(cur_coords)))
 
             tab.add_tab(case)
-
-
 
 
         ####################################
@@ -62,8 +60,7 @@ class Json:
 
         # En fonction des calculs effectues, il faudra appeler set_color(row, column)
 
-        print(grid) # debug purpose
-        print(str(grid.get_colors())) #debug purpose
+        # print(str(grid.get_colors()))
         return str(json.dumps(grid.get_colors())) # return colors to fill the cells after some data process (not yet)
 
 class Action:
