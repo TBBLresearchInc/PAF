@@ -80,6 +80,7 @@ class Tab():
     #prend un tableau et renvoie la liste des attributs contenus
     def get_attrow(self):
         res=AttitudeRow([])
+        print(type(self.attitude_caselist))
         for case in self.attitude_caselist:
                 res.row.append(case.text)
         return res
