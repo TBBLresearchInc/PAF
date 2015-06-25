@@ -82,7 +82,7 @@ class Grid:
     def nb_of_cells(self):
         return len(self.grid_pos)
 
-grid
+
 
 
 
