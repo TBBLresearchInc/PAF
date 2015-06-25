@@ -23,7 +23,7 @@ from grid import Grid
 
 urls = ("/(.*)/", "Index",
         "/py/json", "Json",
-        "py/action", "Action")
+        "/py/action", "Action")
 
 class Index:
     def GET(self, name):
