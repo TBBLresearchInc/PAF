@@ -3,9 +3,24 @@ __author__ = 'quentinleroy'
 # Quentin Leroy
 # quentin.leroy@telecom-paristech.fr
 
+class GridPos:
+    pos = []
+
+    def __init__(self, row, column):
+        self.pos = [row, column]
+
+    def toStr(self):
+        return "["+str(self.pos[0])+","+str(self.pos[1])+"]"
+
+    def get_row(self):
+        return self.pos[0]
+
+    def get_column(self):
+        return self.pos[1]
+
 class Grid:
 
-    """ Classe décrivant le tableau
+    """ Classe decrivant le tableau
     """
 
     grid = {}
@@ -14,9 +29,9 @@ class Grid:
 
     colors = []
 
-    pos = GridPos(1,1)
+    pos = GridPos(1, 1)
 
-    def __init__(self, grid):
+    def __init__(self, grid = {}):
         self.grid = grid
         self.pos = GridPos(1,1)
 
@@ -26,9 +41,7 @@ class Grid:
         if not([row, column] in self.grid_pos):
             self.grid_pos.append([row, column])
 
-
     def get_cell(self, row, column):
-
         self.pos = GridPos(row, column)
         return self.grid[self.pos.toStr()]["content"]
 
@@ -51,20 +64,7 @@ class Grid:
             colors["cells"].append({"row": self.grid_pos[i][0], "column": self.grid_pos[i][1], "result": self.grid[self.pos.toStr()]["color"]})
         return colors
 
-class GridPos:
-    pos = []
 
-    def __init__(self, row, column):
-        self.pos = [row, column]
-
-    def toStr(self):
-        return "["+str(self.pos[0])+","+str(self.pos[1])+"]"
-
-    def get_row(self):
-        return self.pos[0]
-
-    def get_column(self):
-        return self.pos[1]
 
 
 
