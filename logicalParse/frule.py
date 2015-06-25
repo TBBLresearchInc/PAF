@@ -1,6 +1,6 @@
 __author__ = 'claraberard'
 
-class FRule:
+class FRule:    #attribut d un tableau qui donne toutes les listes ecrites dans le tableau
 
     list = []
 

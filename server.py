@@ -1,4 +1,11 @@
 # coding=utf-8
+from LogicalEngine.AttitudeRow import AttitudeRow
+from LogicalEngine.PredicateRow import PredicateRow
+from LogicalEngine.RuleRow import RuleRow
+from logicalParse.case import Case
+from logicalParse.tab import Tab
+from logicalParse.text import Text
+
 __author__ = 'Quentin Leroy'
 # Quentin Leroy
 # quentin.leroy@telecom-paristech.fr
@@ -9,12 +16,14 @@ __author__ = 'Quentin Leroy'
  (il y a t il des cases a colorier ? En quelles couleurs ? Il y a t il des cellules a completer-modifier ?
   Il y a t il un message a donner a l utilisateur ?)"""
 
-import web, json
+import web, json, os.path
+
 
 from grid import Grid
 
 urls = ("/(.*)/", "Index",
-        "/py/json", "Json",)
+        "/py/json", "Json",
+        "py/action", "Action")
 
 class Index:
     def GET(self, name):
@@ -30,15 +39,22 @@ class Json:
     def POST(self):
         data = web.input() #retrieve input data from client
 
-        grid = Grid({})
+        content = str(data["content"])
+        row = int(data["row"])
+        column = int(data["column"])
+        grid.update(row, column, content)
 
-        nb_data = len(data["cells"])
+        tab = Tab({}, RuleRow([]), PredicateRow([]), AttitudeRow([]))
 
-        for i in range(0, len[data["cells"]]):
-            content = str(data["cells"][i]["content"])
-            row = int(data["cells"][i]["row"])
-            column = int(data["cells"][i]["column"])
-            grid.update(row, column, content)
+        for i in range(0, grid.nb_of_cells()):
+            cur_coords = grid.get_coords(i)
+
+            case = Case( cur_coords, Text(grid.get_cell(cur_coords)))
+
+            tab.add_tab(case)
+
+
+
 
         ####################################
         # data process from logical engine #
@@ -50,8 +66,24 @@ class Json:
         print(str(grid.get_colors())) #debug purpose
         return str(json.dumps(grid.get_colors())) # return colors to fill the cells after some data process (not yet)
 
+class Action:
+    def GET(self):
+        user_data = web.input(id = "no data")
+        return user_data.id
+    def POST(self):
+        data = web.input() #retrieve input data from client
+
+        if data == "conflict":
+            return tab.clash()
+
+
+
 grid = Grid({})
+
+tab = Tab({}, RuleRow([]), PredicateRow([]), AttitudeRow([]))
+
 
 if __name__ == "__main__":
    app = web.application(urls, globals()) 
    app.run()
+

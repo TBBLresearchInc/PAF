@@ -4,7 +4,7 @@ from logicalParse.weight import Weight
 __author__ = 'claraberard'
 
 
-class FWeight():
+class FWeight():  #pour resoudre une formule du type $90A2
 
     weight = Weight(0)
     coordinates = (0, 0)
