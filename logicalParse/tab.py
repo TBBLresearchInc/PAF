@@ -16,7 +16,7 @@ class Tab():
     attitude_caselist=[]
     rule_list = RuleRow([])
 
-    def __init__(self, tab,rule_list, predicate_caselist, attitude_caselist):
+    def __init__(self, tab, rule_list, predicate_caselist, attitude_caselist):
         self.predicate_caselist=predicate_caselist
         self.attitude_caselist=attitude_caselist
         self.tab = tab

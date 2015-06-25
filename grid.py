@@ -47,6 +47,13 @@ class Grid:
         self.pos = GridPos(row, column)
         return self.grid[self.pos.toStr()]["content"]
 
+    def get_coords(self, index):
+        self.pos = GridPos(self.grid_pos[index][0], self.grid_pos[index][1])
+        return (self.grid[self.pos.toStr()]["row"], self.grid[self.pos.toStr()]["column"])
+
+
+
+
     def get_color(self, row, column):
         self.pos = GridPos(row, column)
         return self.grid[self.pos.toStr()]["color"]
@@ -66,6 +73,30 @@ class Grid:
             colors["cells"].append({"row": self.grid_pos[i][0], "column": self.grid_pos[i][1], "result": self.grid[self.pos.toStr()]["color"]})
         return colors
 
+    def get_grid(self):
+        return self.grid
+
+    def get_grid_pos(self):
+        return self.grid_pos
+
+    def nb_of_cells(self):
+        return len(self.grid_pos)
+
+
+grid = Grid({})
+
+grid.update(1, 1, "contensdft")
+grid.update(1, 2, "salut")
+
+print(grid.nb_of_cells())
+
+print(grid.get_cell(1, 1))
+
+print(grid.get_grid_pos())
+
+print(grid.get_grid())
+
+print(grid.get_coords(0))
 
 
 
