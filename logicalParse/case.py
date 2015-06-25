@@ -24,19 +24,20 @@ class Case():
         return (self.ref_predicate != self.coordinates) | (self.ref_non != self.coordinates)
 
     def case_solve(self, tabu):
-        if self.text.sentence[0] == "=":
-            if self.text.sentence[0:2]== "=$":
+        if self.text.sentence[0] == "=":   #test si on est dans le cas d'une formule
+            if self.text.sentence[0:2]== "=$": #dans le cas d'une formule creant une attitude
                 bin=True
             else:
                 bin =False
 
-            Formula(self.text.sentence[1:]).fsolve(tabu, self.coordinates)
-            if bin:
-                tabu.attitude_caselist.append(tabu.tab[self.coordinates])
+            Formula(self.text.sentence[1:]).fsolve(tabu, self.coordinates) #quelque soit le cas il faut resoudre la formule
 
-        else:
-            tabu.tab[self.coordinates] = Case(self.coordinates,Predicate(self.text.sentence, 1))
-            tabu.predicate_caselist.append(tabu.tab[self.coordinates])
+            if bin: #si cas formule creant un attribut
+                tabu.attitude_caselist.append(tabu.tab[self.coordinates]) #si de plus on a une formule creant une attitude il faut ajouter la case dans la liste des attributs du tableau
+
+        else: #pas de signe egal
+            tabu.tab[self.coordinates] = Case(self.coordinates,Predicate(self.text.sentence, 1)) #si la case ne commence pas par le signe = il faut convertir le text en predicat
+            tabu.predicate_caselist.append(tabu.tab[self.coordinates]) #puis il faut ajouter la case dans la liste des predicats du tableau
 
     def tostring(self):
         return "case : "+str(self.coordinates)+", "+self.text.sentence

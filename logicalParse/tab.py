@@ -48,8 +48,10 @@ class Tab():
         return self.tab[coordinates].text
 
 
-    "prend un tableau tab et le convertit en un tableau. Les cases de predicats se voient attribues un predicat en attribut." \
-    "Les regles sont ajoutees a l'attribut rule_list de tab"
+    #prend un tableau tab et le convertit en un tableau. Les cases de predicats se voient attribues un predicat en attribut." \
+    #Les regles sont ajoutees a l'attribut rule_list de tab"
+
+    #yannick la distinction de cas ne sert a rien!
     def solve(self):
         for coord in self.tab:
             if self.tab[coord].text.sentence[0] != "=":
@@ -68,13 +70,14 @@ class Tab():
             if (self.tab[coord].text.sentence[0] == "=") & (self.tab[coord].text.sentence[0:4] != "=NON") & (self.tab[coord].text.sentence[0:2] != "=$"):
                 self.tab[coord].case_solve(self)
 
-    "prend un tableau, convertit sa liste de case contenue dans tab et renvoie la liste des predicats contenus"
+    #prend un tableau, convertit sa liste de case contenue dans tab et renvoie la liste des predicats contenus
     def get_predrow(self):
         res=PredicateRow([])
         for case in self.predicate_caselist:
             res.row.append(case.text)
         return res
 
+    #prend un tableau et renvoie la liste des attributs contenus
     def get_attrow(self):
         res=AttitudeRow([])
         for case in self.attitude_caselist:
