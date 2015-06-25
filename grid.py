@@ -58,8 +58,10 @@ class Grid:
         self.pos = GridPos(self.grid_pos[index][0], self.grid_pos[index][1])
         return (self.grid[self.pos.toStr()]["row"], self.grid[self.pos.toStr()]["column"])
 
-
-
+    def delete_cell(self, row, column):
+        self.pos = GridPos(row, column)
+        self.grid.__delitem__(self.pos.toStr())
+        self.grid_pos
 
     def get_color(self, row, column):
         self.pos = GridPos(row, column)
@@ -123,6 +125,21 @@ tabu.add_tab(case)
 
 
 print(tabu.clash())
+
+
+
+
+grid = Grid({})
+
+grid.update(1, 1, "content")
+
+grid.update(1, 2, "content1")
+
+print(grid.nb_of_cells())
+
+grid.delete_cell(1, 1)
+
+print(grid.nb_of_cells())
 
 
 

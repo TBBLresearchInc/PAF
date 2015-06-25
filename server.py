@@ -79,15 +79,18 @@ class Action:
 
         for i in range(0, grid.nb_of_cells()):
             cur_coords = grid.get_coords(i)
-
             case_serv = Case(cur_coords, Text(grid.get_cell(cur_coords[0], cur_coords[1])))
-
-            tab_serv.add_tab(case_serv)
+            if (grid.get_cell(cur_coords[0], cur_coords[1])) != "":
+                tab_serv.add_tab(case_serv)
 
         if data["action"] == "conflict":
             print("CLASH : ")
             # print(tab_serv.clash())
             return str(json.dumps(tab_serv.clash()))
+
+        if data["action"] =="solution":
+            print("OPTIMIZE : ")
+            return str(json.dumps(tab_serv.optimize()))
 
 
 grid = Grid({})
