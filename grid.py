@@ -94,7 +94,6 @@ class Grid:
 
 
 
-
 tabu = Tab({}, RuleRow([]),[] , [])
 
 
