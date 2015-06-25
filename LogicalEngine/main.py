@@ -16,15 +16,15 @@ t = {}
 table_rule = RuleRow([])
 tabu = Tab(t, table_rule,[], [])
 
+
 case1 = Case((1,1), Text("p1"))
 case2 = Case((1,2), Text("p2"))
 case3 = Case((2,1), Text("p3"))
 case4 = Case((3,1), Text("=$90A1"))
 case5 = Case((1,0), Text("=$10A2"))
 case6 = Case((3,3),Text("=$10B1"))
-case7 = Case((5,9), Text("=R(A1,A2)"))
+case7 = Case((5,9), Text("=R(A1,-A2)"))
 case8 = Case((5,8), Text("=R(A1,-B1)"))
-
 
 tabu.add_tab(case1)
 tabu.add_tab(case2)
@@ -61,15 +61,13 @@ rulerow=RuleRow([r1,r2])
 """
 
 
-tabu.solve()
+print tabu.clash()
 
 
 attrow=tabu.get_attrow()
 predrow=tabu.get_predrow()
 rulerow=tabu.rule_list
 
-print predrow
-print rulerow.tostring()
-print attrow.attrow_to_predrow().tostring()
+print attrow.bestsolve(rulerow).tostring()
 
-print attrow.issatisfiable(rulerow)
+
