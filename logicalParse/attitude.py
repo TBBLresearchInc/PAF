@@ -19,3 +19,5 @@ class Attitude(Predicate):
     def get_weight(self):
         return self.weight
 
+    def tostring(self):
+        return "attitude:[" + self.sentence + "," +str(self.weight.value) +", " + str(self.yesno) + "]"
