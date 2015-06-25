@@ -75,6 +75,7 @@ class Action:
         data = web.input() #retrieve input data from client
 
         if data["action"] == "conflict":
+            print("CLASH : ")
             print(tab_serv.clash())
             return json.dumps(tab_serv.clash())
 
