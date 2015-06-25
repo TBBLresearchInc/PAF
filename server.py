@@ -70,7 +70,7 @@ class Action:
     def POST(self):
         data = web.input() #retrieve input data from client
 
-        if data == "conflict":
+        if data["action"] == "conflict":
             return tab.clash()
 
 
