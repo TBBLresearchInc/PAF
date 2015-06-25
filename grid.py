@@ -3,6 +3,8 @@ from logicalParse.case import Case
 from logicalParse.tab import Tab
 from logicalParse.text import Text
 
+import json
+
 __author__ = 'quentinleroy'
 
 # Quentin Leroy
@@ -121,6 +123,7 @@ tabu.add_tab(case)
 
 
 print(tabu.clash())
+
 
 
 
