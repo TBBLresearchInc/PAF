@@ -40,6 +40,18 @@ class Json:
             column = int(data["cells"][i]["column"])
             grid.update(row, column, content)
 
+        # Filename to write
+        filename = "data.txt"
+
+        # Open the file with writing permission
+        myfile = open(filename, 'w')
+
+        # Write a line to the file
+        myfile.write(json.dumps(data))
+
+        # Close the file
+        myfile.close()
+
         ####################################
         # data process from logical engine #
         ####################################

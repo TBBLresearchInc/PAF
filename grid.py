@@ -22,15 +22,18 @@ class GridPos:
 
 class Grid:
 
+    """ Classe decrivant le tableau
+    """
+
     grid = {}
 
     grid_pos = []
 
     colors = []
 
-    pos = GridPos(1,1)
+    pos = GridPos(1, 1)
 
-    def __init__(self, grid):
+    def __init__(self, grid = {}):
         self.grid = grid
         self.pos = GridPos(1,1)
 
@@ -40,9 +43,7 @@ class Grid:
         if not([row, column] in self.grid_pos):
             self.grid_pos.append([row, column])
 
-
     def get_cell(self, row, column):
-
         self.pos = GridPos(row, column)
         return self.grid[self.pos.toStr()]["content"]
 
@@ -64,5 +65,8 @@ class Grid:
             self.pos = GridPos(self.grid_pos[i][0], self.grid_pos[i][1])
             colors["cells"].append({"row": self.grid_pos[i][0], "column": self.grid_pos[i][1], "result": self.grid[self.pos.toStr()]["color"]})
         return colors
+
+
+
 
 
