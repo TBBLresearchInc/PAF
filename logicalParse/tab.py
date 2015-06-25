@@ -85,7 +85,7 @@ class Tab():
                 cell["row"]=a
                 cell["column"]=b
                 if badrules.row.__contains__(rule):
-                    cell["result"]="error"
+                    cell["result"]="invalid"
                 else:
                     cell["result"]="valid"
                 res["cells"].append(cell)
@@ -113,6 +113,6 @@ class Tab():
             if pred.yesno==1:
                 cell["result"]="valid"
             else:
-                cell["result"]="error"
+                cell["result"]="invalid"
             res["cells"].append(cell)
         return res
