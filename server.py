@@ -49,8 +49,6 @@ class Json:
 
         tab_serv = Tab({}, RuleRow([]), [], [])
 
-
-
         for i in range(0, grid.nb_of_cells()):
             cur_coords = grid.get_coords(i)
 
@@ -77,10 +75,19 @@ class Action:
     def POST(self):
         data = web.input() #retrieve input data from client
 
+        tab_serv = Tab({}, RuleRow([]), [], [])
+
+        for i in range(0, grid.nb_of_cells()):
+            cur_coords = grid.get_coords(i)
+
+            case_serv = Case(cur_coords, Text(grid.get_cell(cur_coords[0], cur_coords[1])))
+
+            tab_serv.add_tab(case_serv)
+
         if data["action"] == "conflict":
             print("CLASH : ")
-            print(Json.tab_serv.clash())
-            return str(json.dumps(Json.tab_serv.clash()))
+            print(tab_serv.clash())
+            return str(json.dumps(tab_serv.clash()))
 
 
 grid = Grid({})
