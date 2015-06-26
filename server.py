@@ -72,8 +72,9 @@ class Action:
 
         if data["action"] == "reset":
             print("RESET : ")
-            print(grid.toStr())
             grid.reset()
+            print(grid.toStr())
+
 
 
 
