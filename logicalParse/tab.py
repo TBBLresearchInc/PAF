@@ -70,7 +70,7 @@ class Tab():
                 res.row.append(case.text)
         return res
 
-    def clash(self):
+    def clash(self):   #premiere etape du code, pour regarder sil y a des clash entre les differentes regles
         self.solve()
         print self.predicate_caselist
         attrow=self.get_attrow()
@@ -94,7 +94,7 @@ class Tab():
     print
 
 
-    def optimize(self):
+    def optimize(self):  #dans le cas dun clash cette fonction indique quelle va etre la solution la plus satisfaisante pour lutilisateur
         self.solve()
         attrow=self.get_attrow()
         rulerow=self.rule_list

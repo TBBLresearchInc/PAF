@@ -14,8 +14,8 @@ class FWeight():  #pour resoudre une formule du type $90A2
         self.weight = weight
 
     def weight_solve(self, tab, coordinates):
-        s = tab.tab[self.coordinates].text.sentence
-        a = Attitude(s, self.weight, self.coordinates,1)
-        tab.tab[coordinates].text = a
-        tab.tab[coordinates].ref_predicate = self.coordinates
-        tab.tab[self.coordinates].ref_predicate = coordinates
+        s = tab.tab[self.coordinates].text.sentence # on recupere le predicat dans la case appelee
+        a = Attitude(s, self.weight, self.coordinates,1)  #on en cree une attitude avec ce predicat
+        tab.tab[coordinates].text = a               # mise a jour de la case
+        tab.tab[coordinates].ref_predicate = self.coordinates #mise a jour de la reference sur predicat de la case contenant l attribut
+        tab.tab[self.coordinates].ref_predicate = coordinates #mise a jour de la reference sur predicat de la case contenant le predicat
