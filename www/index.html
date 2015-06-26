@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Tableur Logique</title>
+    <link rel="stylesheet" href="styles/slick.grid.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/grid.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/sidebar.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/font-awesome.css" type="text/css"/>
+</head>
+<body>
+
+<div id="myGrid"></div>
+<div id="topbar">
+    <h1 class="title">My Logical Spreadsheet</h1>
+    <a id="conflicts" class="whiteBtn">trouver les conflits</a>
+    <a id="solve" class="whiteBtn">Optimiser</a>
+</div>
+<div id="sidebar">
+    <div id="inspector">
+        <h1 class="title">Inspecteur</h1>
+    </div>
+    <div class="sidebarContent" id="welcome">
+        <h1 class="small title">Comment utiliser le tableur ?</h1> <br>
+        <h2 class="section title">
+            1. <span style="margin-right: 0.3vw"class="fa fa-lightbulb-o"></span> Ajouter des propositions</h2><br>
+            <p>Les propositions sont les opinions et les désirs ou volontés que vous souhaitez organiser. </p><br>
+            <a id="propBt" class="btn">ajouter une proposition</a>
+        <h2 class="section title">
+            2. <span style="margin-right: 0.3vw" class="fa fa-cogs"></span> Ajouter des règles</h2><br>
+            <p>Les règles décrivent les liens logiques entre les propositions, par des incompatibilités ou de la logique simple.</p><br>
+            <a id="ruleBt" class="btn">ajouter une règle</a>
+        <h2 class="section title">
+            3. <span style="margin-right: 0.3vw" class="fa fa-sliders"></span> Pondérer les propositions</h2><br>
+            <p>Chaque proposition peut être pondérée pour classer leur importance.
+            La pondération peut être négative (pour exprimer une opposition).</p><br>
+            <a id="weightBt" class="btn">ajouter une pondération</a>
+        <h2 class="section title">
+            4. <span style="margin-right: 0.3vw" class="fa fa-comment"></span> Commenter</h2><br>
+            <p>Vous pouvez librement ajouter des commentaires qui seront ignorés par le tableur.</p><br>
+            <a id="commentBt" class="btn">ajouter un commentaire</a>
+        <h2 class="section title">
+            5. <span style="margin-right: 0.3vw" class="fa fa-check-circle"></span> Examiner les conflits</h2><br>
+            <p style="margin-bottom: 2vh">Quand propositions, poids et règles sont en place, appuyez sur "trouver les conflits" pour visualiser
+            les règles qui ne sont pas vérifiées, et "optimiser" pour visualiser la meilleure solution en fonction
+            des poids.</p>
+    </div>
+    <div class="sidebarContent" id="proposition">
+        <h3 class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-table"></span> Case :
+        </h3>
+        <a id="propcase" class="btn cellSelector">selectionner ...</a>
+        <h3 style="margin-top: 5vh" class="section title">
+            <span style="margin-right: 0.3vw" class="fa fa-lightbulb-o"></span> Proposition :
+        </h3>
+        <input type="text" class="txtbx" id="propval" size="17">
+        <h3 style="margin-top: 5vh" class="section title">
+            <span style="margin-right: 0.3vw" class="fa fa-sliders"></span> Pondération :
+        </h3>
+        <input type="number" class="txtbx" id="propweight" size="17">
+        <a id="propweightcell" class="btn">case ...</a>
+        <h3 style="margin-top: 7vh" class="section title">
+            <span style="margin-right: 0.3vw" class="fa fa-cogs"></span> Règles utilisants la proposition :
+        </h3>
+        <div id="proprules" class="gridSection"></div>
+    </div>
+    <div class="sidebarContent" id="comment">
+        <h3 class="section title"><span style="margin-right: 0.3vw"class="fa fa-table"></span> Case : </h3>
+        <a id="commentcase" class="btn cellSelector">selectionner ...</a>
+        <h3 style="margin-top: 5vh" class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-comment"></span> Commentaire : </h3>
+        <input type="text" class="txtbx" id="commentval" size="17">
+    </div>
+    <div class="sidebarContent" id="weight">
+        <h3 class="section title"><span style="margin-right: 0.3vw"class="fa fa-table"></span> Case : </h3>
+        <a id="weightcase" class="btn cellSelector">selectionner ...</a>
+        <h3 style="margin-top: 5vh" class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-lightbulb-o"></span> Proposition liée : </h3>
+        <a id="weightproposition" class="btn cellSelector">selectionner ...</a>
+        <p> Sélectionnez la proposition que vous souhaitez pondérer</p>
+        <h3 style="margin-top: 5vh" class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-sliders"></span> Pondération : </h3>
+        <input type="number" class="txtbx" id="weightval" size="17">
+        <h3 style="margin-top: 7vh" class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-sort-amount-desc"></span> Echelle des pondérations :
+        </h3>
+        <div id="weights" class="gridSection"></div>
+    </div>
+    <div class="sidebarContent" id="rule">
+        <h3 class="section title"><span style="margin-right: 0.3vw"class="fa fa-table"></span> Case : </h3>
+        <a id="rulecase" class="btn cellSelector">selectionner ...</a>
+        <h3 style="margin-top: 5vh" class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-minus-circle"></span> Incompatibilité : </h3>
+        <input type="text" class="txtbx" id="ruleval" size="17">
+        <p id="ruletip">Entrez une expression logique qui doit être fausse. Pour ajouter des propositions,
+            cliquez sur une cases ou entrez leur numéro de case. Séparez d'un '+' pour ET et d'un '-' pour ET NON</p>
+        <h3 style="margin-top: 1vh" class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-puzzle-piece"></span> Expression simple : </h3>
+        <input type="text" class="txtbx" id="rulesimpleval" size="17">
+        <p id="simpleruletip">Entrez une expression qui doit être vérifiée entre deux éléments.
+            Les éléments peut être liés par "donc" ou "ou"</p>
+        <h3 style="margin-top: 4vh" class="section title">
+            <span style="margin-right: 0.3vw"class="fa fa-lightbulb-o"></span> Propositions utilisées :
+        </h3>
+        <div id="ruleprops" class="gridSection"></div>
+    </div>
+
+</div>
+
+<script src="scripts/jquery-1.7.min.js"></script>
+<script src="scripts/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="scripts/jquery.event.drag-2.2.js"></script>
+
+
+<script src="scripts/slickgrid/slick.core.js"></script>
+<script src="scripts/slickgrid/plugins/slick.autotooltips.js"></script>
+<script src="scripts/slickgrid/plugins/slick.cellrangedecorator.js"></script>
+<script src="scripts/slickgrid/plugins/slick.cellrangeselector.js"></script>
+<script src="scripts/slickgrid/plugins/slick.cellcopymanager.js"></script>
+<script src="scripts/slickgrid/plugins/slick.cellselectionmodel.js"></script>
+<script src="scripts/slickgrid/slick.editors.js"></script>
+<script src="scripts/slickgrid/slick.grid.js"></script>
+
+<script src="scripts/grid.js"></script>
+<script src="scripts/request.js"></script>
+<script src="scripts/sidebar.js"></script>
+<script src="scripts/cells.js"></script>
+<script src="scripts/logic.js"></script>
+
+</body>
+</html>

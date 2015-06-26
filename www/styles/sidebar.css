@@ -1,0 +1,78 @@
+#sidebar #inspector {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 4%;
+  background: #1f202a; }
+  #sidebar #inspector h1 {
+    width: 12vh;
+    color: #fffbea;
+    font-size: 3vh; }
+#sidebar #welcome p {
+  margin-right: 1vw;
+  margin-bottom: 0vh;
+  margin-top: 0vh; }
+#sidebar #proposition #propweight {
+  width: 50%; }
+#sidebar #proposition #propweightcell {
+  position: absolute;
+  margin: 1.6vh;
+  left: 60%; }
+#sidebar #weight p {
+  margin-top: 3vh; }
+
+.section {
+  top: 0;
+  color: #1f202a;
+  font-size: 1.2vw;
+  margin: 1vh 0.2vw 0.2vw; }
+
+.btn {
+  position: relative;
+  left: 10%;
+  margin: 6px;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 1vw;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  display: inline-block;
+  color: #1f202a;
+  border: 2px #1f202a solid; }
+
+.btn:hover {
+  background-color: #1f202a;
+  color: #fffded; }
+
+.btnSelected {
+  background-color: rgba(128, 121, 123, 0.95);
+  color: #fffded; }
+
+.cellSelector {
+  position: absolute;
+  margin: -3vh;
+  left: 60%; }
+
+.txtbx {
+  margin-top: 1vh;
+  width: 93%;
+  height: 2vw;
+  background: #fff8e4;
+  border: solid 2px #1f202a;
+  transition: border 0.3s;
+  outline: 0; }
+
+.txtbx:focus {
+  border: solid 2px #972224;
+  background: #fff8f8; }
+
+.gridSection {
+  width: 93%;
+  height: 40vh;
+  margin-top: 2vh;
+  border: 1px solid #969696; }
+
+/*# sourceMappingURL=sidebar.css.map */

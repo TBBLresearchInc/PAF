@@ -1,0 +1,122 @@
+@import url(fonts.css);
+* {
+  font-family: Avenir, arial, sans-serif;
+  font-size: 8pt; }
+
+body {
+  background: #fffded;
+  padding: 0;
+  margin: 0; }
+
+#myGrid {
+  background: white;
+  outline: 0;
+  border: 1px solid #969696;
+  top: 9vh;
+  width: 80vw;
+  height: 91vh;
+  left: 0;
+  position: fixed;
+  z-index: 1; }
+
+#sidebar {
+  top: 9vh;
+  right: 0;
+  width: 20vw;
+  height: 91vh;
+  position: fixed;
+  background: inherit;
+  z-index: 0; }
+
+.sidebarContent {
+  padding: 2.5vh 1vh 1vh;
+  position: relative;
+  top: 3%;
+  width: 100%;
+  height: 96%;
+  overflow-y: auto; }
+
+#topbar {
+  top: 0;
+  left: -5vw;
+  width: 110vw;
+  height: 9vh;
+  position: fixed;
+  background: url(../assets/logicbg.png) repeat;
+  box-sizing: border-box;
+  box-shadow: 0 -1px 20px rgba(0, 0, 0, 0.7) inset; }
+  #topbar h1 {
+    width: 53vh;
+    color: #fff8e4;
+    font-size: 5vh; }
+  #topbar #conflicts {
+    right: 14vw; }
+  #topbar #solve {
+    right: 7vw; }
+
+.title {
+  font-weight: 700;
+  font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
+  font-style: italic;
+  position: relative;
+  top: -2vh;
+  margin-left: auto;
+  margin-right: auto; }
+
+.small {
+  top: 0;
+  margin-left: 0;
+  color: #1f202a;
+  font-size: 1.5vw; }
+
+.whiteBtn {
+  position: absolute;
+  top: 2vh;
+  height: 3vh;
+  border-radius: 5px;
+  padding: 0.5vh;
+  font-size: 2vh;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  display: inline-block;
+  color: #fff8e4;
+  border: 2px #fff8e4 solid; }
+
+.whiteBtn:hover {
+  background-color: #fff8e4;
+  color: #1f202a; }
+
+.invalid {
+  position: relative;
+  font-weight: 700;
+  background: #f86f6d;
+  height: 95%; }
+  .invalid .higher {
+    background: #f8203f; }
+  .invalid .high {
+    background: #f83c5c; }
+  .invalid .middle {
+    background: #ec6c6b; }
+  .invalid .low {
+    background: #ec6c6b; }
+
+.valid {
+  position: relative;
+  font-weight: 700;
+  background: #88f865;
+  height: 95%; }
+
+.rule {
+  position: relative;
+  font-weight: 700;
+  background: #b7def0;
+  height: 95%; }
+
+.sent {
+  position: relative;
+  font-weight: 700;
+  height: 95%; }
+
+/*# sourceMappingURL=main.css.map */
