@@ -71,6 +71,8 @@ class Action:
             return str(json.dumps(tab_serv.optimize()))
 
         if data["action"] == "reset":
+            print("RESET : ")
+            print(grid.toStr())
             grid.reset()
 
 
