@@ -53,3 +53,4 @@ class Grid:
     def reset(self):
         self.grid = {}
         self.grid_coords = []
+
