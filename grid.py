@@ -1,13 +1,15 @@
 __author__ = "quentinleroy"
 
 # Quentin Leroy
+# Pour le Tableur Logique, outil d'elucidation de conflits logiques
 # quentin.leroy@telecom-paristech.fr
 
 class Grid:
 
-    """ Classe decrivant le tableau
+    """ Classe decrivant le tableau du point de vue de l'application web
     """
     grid = {}
+
     grid_coords = []
 
     def __init__(self):
