@@ -14,13 +14,10 @@ class Formula(Text):
         Text.__init__(self, sentence)
 
     def isFormulaWeight(self):
-        return self.sentence[0] == "$"
+        return self.sentence[0] == "$"   #la syntaxe pour creer un attribut devait etre =$90B2
 
     def isFormulaNon(self):
-        return self.sentence[0:3] == "NON"
-
-    def isFormulaResult(self):
-        return self.sentence[0] == "("
+        return self.sentence[0:3] == "NON"  #la syntaxe pour creer le predicat oppose devait etre =NONB2
 
     def isFormulaRule(self):
         return self.sentence[0:1] == "R"
@@ -102,10 +99,10 @@ class Formula(Text):
         f= FNon(c)
         return f
 
-    def fsolve(self, tab, coordinates):   #pour resoudre n'importe quelle formule si dessus
+    def fsolve(self, tab, coordinates):   #pour resoudre n'importe quelle formule ci dessus selon les cas
         if self.isFormulaWeight():
             self.to_fweight_formula().weight_solve(tab, coordinates)
         elif self.isFormulaNon():
                 self.to_fnon_formula().non_solve(tab, coordinates)
         elif self.isFormulaRule():
-            self.to_logical_rule(tab,coordinates)
+            self.to_logical_rule(tab, coordinates)

@@ -10,11 +10,11 @@ class Rule:
     coordinates = (0,0)
 
     def __init__(self, list, coordinates):
-        self.list = list
+        self.list = list  #liste de predicats qui sont incompatibles
         self.coordinates = coordinates
 
 
-    def add_incompatibility(self, tab, coordinates,yesno):
+    def add_incompatibility(self, tab, coordinates,yesno):  #ajouter une incompatibilite dans la liste de predicat qui est attribut de la regle
         predicate=Predicate(tab.tab[coordinates].text.sentence,yesno)
         self.list.append(predicate)
 

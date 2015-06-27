@@ -7,10 +7,5 @@ class FRule:    #attribut d un tableau qui donne toutes les listes ecrites dans 
     def __init__(self, list):
         self.list = list
 
-    def __addRule__ (self, rule):
+    def __addRule__(self, rule):
         self.list.append(rule)
-
-    def frule_solve(self, tab):
-        pass
-
-    #appeler la fonction de yannick
