@@ -14,7 +14,7 @@ __author__ = 'Quentin Leroy'
  divers calculs logiques), l'application renvoie aussi au client les resultats de la partie calcul
 """
 
-import web, json, os.path
+import web, json
 
 from grid import Grid
 
@@ -31,7 +31,7 @@ class Index:
             name = "World"
         return "Home Page"
 
-# Class gerant les mises a jour du tableau
+# Classe gerant les mises a jour du tableau
 class Json:
 
     def GET(self):
