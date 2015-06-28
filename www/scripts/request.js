@@ -1,4 +1,4 @@
-
+// send the content of a cell to the server
 function sendCell(cell, content) {
     var ajaxCell = {
         row:cell.row,
@@ -6,14 +6,13 @@ function sendCell(cell, content) {
         content: content
     };
 
-    postData(ajaxCell, function(xhr, status) {
-        //updateClasses(xhr);
-    });
+    postData(ajaxCell);
 }
 function postData(data, callback) {
     $.post("py/json", data, callback);
 }
 
+// when server answers, update cells color
 function updateClasses(xhr) {
     var cell;
     var cells = JSON.parse(xhr).cells;
@@ -28,16 +27,19 @@ function updateClasses(xhr) {
 }
 
 $(function() {
+    // configure the conflict solving buttons click event
     $("#conflicts").click(function() {
-        cellContentChanged(activeCell());
-        setFormat(propositions, "");
-        $.post("py/action", {action:"conflict"}, function(xhr, status) {updateClasses(xhr)});
+        cellContentChanged(activeCell()); // make sure last changes have been sent
+        setFormat(propositions, "");      // clear propositions colors, only rule will be colored
+        $.post("py/action", {action:"conflict"}, function(xhr, status) {updateClasses(xhr)}); //ask for conflict display
 
     });
     $("#solve").click(function() {
-        setFormat(rules, "rule");
-        cellContentChanged(activeCell());
-        $.post("py/action", {action:"solution"}, function(xhr, status) {updateClasses(xhr)});
+        setFormat(rules, "rule");           // color the rules in blue
+        cellContentChanged(activeCell());   // make sure last changes have been sent
+        $.post("py/action", {action:"solution"}, function(xhr, status) {updateClasses(xhr)}); // ask for best solution display
     });
+
+    // reset server's table on page load/reload
     $.post("py/action", {action:"reset"});
 });

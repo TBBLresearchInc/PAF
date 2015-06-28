@@ -1,14 +1,18 @@
+// cell content objects
 var rules = {};
 var propositions={};
 var weights={};
 
+// transform the text of the rule to an object
+//      * text : the text of yhe rule
+//        returns : an incompatibility as an array of elements containing the propositions
 function parseRule(text) {
     var rule = [];
-    if(text.startsWith("=!")) {
-        text = text.replace(/\s+/g, "").substring(2);
+    if(text.startsWith("=!")) { // if its an incompatibily
+        text = text.replace(/\s+/g, "").substring(2); // remove spaces and initial symbol
         var reg = /(-|\+)?[A-Z]([0-9]+)/i;
         while(text.length >0) {
-            var element = reg.exec(text);
+            var element = reg.exec(text);   // find next valid cell name with sign (+/-)
             if(element!=null) {
                 element = element[0];
                 if (element.startsWith("-")) {
@@ -23,7 +27,7 @@ function parseRule(text) {
                         cell: cellNameToArray(element.substring(1)),
                         name: element.substring(1)
                     });
-                } else {
+                } else {    // "+" can be omitted
                     rule.push({
                         polarity: true,
                         cell: cellNameToArray(element),
@@ -36,11 +40,12 @@ function parseRule(text) {
             }
 
         }
-    } else if(text.startsWith("= ")) {
-        text = text.replace(/\s+/g, "").substring(1);
+    } else if(text.startsWith("= ")) {  // if its a simple rule
+        text = text.replace(/\s+/g, "").substring(1); // remove spaces and initial symbol
         var donc = /donc/i;
         var ou = /ou/i;
 
+        // get the cells linked by the rule, returns null if the syntax is invalid
         function getArgs(text) {
             var cell = /[A-Z]([0-9]+)/i;
             var element1 = cell.exec(text);
@@ -56,7 +61,7 @@ function parseRule(text) {
         }
 
         var args = getArgs(text);
-        if(args!=null && donc.test(text)) {
+        if(args!=null && donc.test(text)) { // if it contains a "donc"
             rule = [
                 {
                     polarity: true,
@@ -69,7 +74,7 @@ function parseRule(text) {
                     name: args[1]
                 }
             ];
-        } else if(args!=null && ou.test(text)) {
+        } else if(args!=null && ou.test(text)) { // if it contains a "ou"
             rule = [
                 {
                     polarity: false,
@@ -87,6 +92,7 @@ function parseRule(text) {
     return rule;
 }
 
+// transform the text of the weight to an object
 function parseWeight(text) {
     var reg = /[A-Z]([0-9]+)/i;
     var value = parseInt(text.substring(text.indexOf(":")+1));
@@ -96,6 +102,7 @@ function parseWeight(text) {
     }
 }
 
+// get back a text matching server side required syntax
 function ruleToText(rule) {
     var index;
     var text = "=R(";
@@ -109,10 +116,12 @@ function ruleToText(rule) {
     return text.substring(0,text.length-1) + ")";
 }
 
+// get back a text matching server side required syntax
 function weightToText(weight) {
     return "=$" + weight.value + cellFromArray(weight.proposition).name;
 }
 
+// update cell content objects and returns the text to be sent to the server
 function parseCell(cell) {
     var content = cell.text();
 
@@ -140,6 +149,8 @@ $(function() {
         cellContentChanged(Cell(args.cell, args.row))
     });
 });
+
+// update the server's table whenever a cell is changed
 function cellContentChanged(changed) {
     var content = parseCell(changed);
 

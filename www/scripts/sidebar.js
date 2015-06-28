@@ -207,15 +207,9 @@ function bindInputToActiveCell(id, formatter, invFormatter) {
         $("#" + id).val("");
     }
 }
-// register events needed for welcome sidebar
-function loadWelcomeSidebar() {
-    $("#propBt").click(function() {setSidebarSection("proposition")});
-    $("#ruleBt").click(function() {setSidebarSection("rule")});
-    $("#weightBt").click(function() {setSidebarSection("weight")});
-    $("#commentBt").click(function() {setSidebarSection("comment")});
-    inputFocus=true;
-}
 
+// set up select cell button
+//          * id : the ID of the button
 function setupCellSelect(id) {
     // if any cell is selected, show it as the current cell
     if(grid.getActiveCell()!=null) {
@@ -225,7 +219,14 @@ function setupCellSelect(id) {
     $("#"+id).click(function() {selectCurrentCell(id)});
 }
 
-// when switching to proposition sidebar, load content into UI elements
+// load content and register events when showing a new sidebar
+function loadWelcomeSidebar() {
+    $("#propBt").click(function() {setSidebarSection("proposition")});
+    $("#ruleBt").click(function() {setSidebarSection("rule")});
+    $("#weightBt").click(function() {setSidebarSection("weight")});
+    $("#commentBt").click(function() {setSidebarSection("comment")});
+    inputFocus=true;
+}
 function loadPropositionSidebar() {
     // unload previous event callbaks
     $("#propweight").off("change");
@@ -284,7 +285,6 @@ function loadPropositionSidebar() {
     // load content into the list of rules using this proposition
     updatePropGrid();
 }
-
 function loadWeightSidebar() {
 
     $("#weightval")

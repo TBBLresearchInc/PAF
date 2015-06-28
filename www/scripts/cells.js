@@ -56,28 +56,37 @@ function activeCell() {
     return Cell(c.cell, c.row);
 }
 
+// get a cell for an array [column, row]
 function cellFromArray(array) {
     return Cell(array[0],array[1]);
 }
+
+// access cell content in the grid
 function getCellText(column, row) {
     return data[row][grid.getColumns()[column].field];
 }
 function setCellText(column, row, value) {
     data[row][grid.getColumns()[column].field] = value;
 }
+
 // get a cell "natural" name, (e.g. "C3" or "E4")
 function getCellName(column, row) {
     return grid.getColumns()[column].name + row + "";
 }
 
+// parse cell's name and return coordinates ([column, row])
 function cellNameToArray(name) {
     var column = parseInt(grid.getColumnIndex(name.substring(0,1)));
     var row = parseInt(name.substring(1));
     return [column, row];
 }
+
+// get a cell for its name, like 'A2'
 function cellNamed(name) {
     return cellFromArray(cellNameToArray(name));
 }
+
+// set a group of cells format (color and font)
 function setFormat(cells, format) {
     var cellname;
     for(cellname in cells) {
